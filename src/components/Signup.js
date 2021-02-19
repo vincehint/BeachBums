@@ -36,7 +36,7 @@ const Signup = () => {
         }
     }
 
-    if (redirect) return <Redirect to="/login" />
+    if (redirect) return <Redirect to="/profile" />
 
     return (
         <div className="row mt-4">
