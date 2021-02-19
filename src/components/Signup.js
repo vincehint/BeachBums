@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-const REACT_APP_SERVER_URL = 'http://localhost:8000';
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Signup = () => {
     let [name, setName] = useState('');
@@ -30,7 +30,7 @@ const Signup = () => {
         e.preventDefault();
 
         if (password === confirmPassword) {
-            const newUser = { motto: name, email, password }
+            const newUser = { name, email, password }
 
             axios.post(`${REACT_APP_SERVER_URL}/api/signup`, newUser)
             .then(response => {
