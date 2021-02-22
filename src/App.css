@@ -47,6 +47,7 @@ body {
   border-style: solid;
   border-width: 3px;
   border-color: rgb(143, 108, 92);
+  text-align: center;
 }
 .login {
   /* -webkit-text-stroke: white 1px; */
@@ -125,6 +126,8 @@ form {
   font-family: 'beachclub-grungeregular';
   padding: 25px;
   text-decoration: none;
+  color: black!important;
+  
 }
 .navbarLogo {
   font-family: 'beachclub-grungeregular';
@@ -133,10 +136,9 @@ form {
   -webkit-text-stroke: 1.5px #322415;
   font-size: 4em;
   text-decoration: none!important;
+  color:black!important;
 }
-.nav-link{
-  color:red;
-}
+
 
 /* Footer Styling */
 .footer {
