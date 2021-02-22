@@ -7,7 +7,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
-import About from './components/About';
+import Home from './components/Home';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -63,7 +63,7 @@ function App() {
             path="/login" 
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} 
           />
-          <Route path="/about" component={ About } />
+          <Route path="/home" component={ Home } />
           <PrivateRoute path="/profile" component={ Profile } user={currentUser} />
           <Route exact path="/" component={ Welcome } />
         </Switch>
