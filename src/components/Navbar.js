@@ -3,11 +3,11 @@ import { NavLink, Link } from 'react-router-dom';
 
 const Navbar = (props) => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar">
             <div className="container">
-                <Link className="navbar-brand" to="/">MERN Auth</Link>
+                <Link font-family='tiki_tropicregular' className="navbarLogo" to="/">Beach Bums</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="#navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-icon"></span>
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarsExample07">
