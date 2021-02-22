@@ -39,25 +39,39 @@ const Signup = () => {
     if (redirect) return <Redirect to="/profile" />
 
     return (
-        <div className="row mt-4">
-            <div className="col-md-7 offset-md-3">
-                <div className="card card-body">
-                    <h2 className="py-2">Signup</h2>
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" name="email" value={email} onChange={handleEmail} className="form-control"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input type="password" name="password" value={password} onChange={handlePassword} className="form-control"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="confirmPassword">Confirm Password</label>
-                            <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="form-control"/>
-                        </div>
-                        <button type="submit" className="btn btn-primary float-right">Submit</button>
-                    </form>
+        <div className="signUpOne">
+            <div className="signUpPage">
+                <div className="signUpContainer">
+                    <div className="signUpBody">
+                        <h2 className="signUpPara">Signup</h2>
+                        <form onSubmit={handleSubmit}>
+                            <div className="signUpForm">
+                                <label htmlFor="email">Email</label>
+                                <input type="email" name="email" value={email} onChange={handleEmail} className="formControl"/>
+                            </div>
+                            <div className="signUpForm">
+                                <label htmlFor="password">Password</label>
+                                <input type="password" name="password" value={password} onChange={handlePassword} className="formControl"/>
+                            </div>
+                            <div className="signUpForm">
+                                <label htmlFor="confirmPassword">Confirm Password</label>
+                                <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="formControl"/>
+                            </div>
+                            <div className="birthDate">
+                                <label htmlFor="dateOfBirth">Birth Date</label>
+                                <input type="date" name="birthday"  className="formControl"/>
+                            </div>
+                            <div>
+                                <label htmlFor="location">Location</label>
+                                <input type="location" name="location" className="formControls"/>
+                            </div>
+                            <div>
+                                <label htmlFor="aboutMe">Tell Us a Little About Yourself...</label>
+                                <input type="text" id="aboutMeBox" name="aboutMe" className="formControls"/>
+                            </div>
+                            <button type="submit" className="submitButtonSignUp">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

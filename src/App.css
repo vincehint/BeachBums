@@ -1,10 +1,144 @@
+/* the basics */
 html {
   position: relative;
   min-height: 100%;
 }
 body {
+  font-family: 'tiki_tropicregular';
   margin-bottom: 60px; /* Margin bottom by footer height */
+  background-image: url('https://images.unsplash.com/photo-1594494842991-a0e13dd4a4ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+  background-color: #d5d1bd;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+@font-face {
+  font-family: 'beach';
+  src: url('/assets/webfontkit-20210219-210216/beachclub-grunge-webfont.woff2') format('woff2'),
+       url('/assets/webfontkit-20210219-210216/beachclub-grunge-webfont.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Welcome Page Styling */
+.welcomeTo {
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+}
+.welcomePara {
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+}
+.welcomeTo {
+  font-family: 'Dancing Script', cursive;
+  -webkit-text-stroke: rgb(27, 88, 102) 1px;
+  padding: 15px;
+  margin: 15px;
+  
+}
+.welcomeBox {
+  padding: 20px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 25px;
+  color:rgb(109, 204, 211);
+  -webkit-text-stroke: rgb(27, 88, 102) 1px;
+  background-color: rgb(220, 205, 188);
+  height: 400px;
+  letter-spacing: 1.5px;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: rgb(143, 108, 92);
+}
+.login {
+  /* -webkit-text-stroke: white 1px; */
+  background-color:rgb(26, 210, 210);
+  
+  color: rgb(43, 89, 89);
+  border:solid 1px aquamarine;
+  border-radius: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.signup {
+  /* -webkit-text-stroke: white 1px; */
+  background-color: rgb(26, 210, 210);
+  letter-spacing: 2px;
+  
+  color: rgb(43, 89, 89);
+  border:solid 1px aquamarine;
+  border-radius: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Sign Up Page Styling */
+.signupPage {
+  text-align: center;
+  border-radius: 6px;
+}
+.submitButtonSignUp {
+  text-align: center;
+  align-items: center;
+  float: none!important;
+  background-color: rgb(220, 205, 188);
+}
+.signUpPage {
+  background-color: rgb(220, 205, 188);
+  text-align: center;
+  border-radius: 5px;
+  border-radius: 6px;
+  border: solid 3px rgb(168, 153, 143) 
+}
+.signUpForm {
+  background-color: rgb(220, 205, 188);
+  text-align: center;
+  display: flexbox;
+  border-radius: 6px;
+
+}
+input.form-control {
+  background-color: rgb(238, 224, 207);
+  width: 300px;
+  text-align: center;
+}
+.signUpContainer{
+  width: 800px;
+  align-content: center;
+  
+}
+.signUpOne {
+  text-align: center;
+  display: flex;
+  padding: 50px;
+  
+}
+#aboutMeBox {
+  width: 200px;
+ 
+}
+form {
+  text-align: center;
+  display: inline-block;
+}
+
+/* NavBar Styling */
+.navbar {
+  font-family: 'beachclub-grungeregular';
+  padding: 25px;
+  text-decoration: none;
+}
+.navbarLogo {
+  font-family: 'beachclub-grungeregular';
+  text-align: left;
+  color: #7b593e;
+  -webkit-text-stroke: 1.5px #322415;
+  font-size: 4em;
+  text-decoration: none!important;
+}
+.nav-link{
+  color:red;
+}
+
+/* Footer Styling */
 .footer {
   position: absolute;
   bottom: 0;
