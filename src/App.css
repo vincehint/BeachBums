@@ -211,10 +211,35 @@ input.form-control {
 
 .home-wrapper {
   margin: 15px;
-  background-color: rgb(26, 210, 210);
+  background-color: #6faf95;
+}
+.homeRow {
+  display: flex;
+  flex-direction: row;
+  
+  width: 100%;
 }
 
-
+.postColumn {
+  background-color: #d5d1bd;
+  width: 70%;
+  flex: 2;
+  margin: 10px;
+}
+.followColumn {
+  background-color:#d5d1bd;
+  width: 30%;
+  flex: 1;
+  margin: 10px;
+}
+.feedColumn {
+  background-color:#d5d1bd;
+  width: 64%;
+  flex:2;
+  margin: 10px;
+  margin-bottom: 20px;
+  
+}
 
 
 /* Footer Styling */
