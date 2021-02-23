@@ -9,8 +9,7 @@ const Welcome = () => {
     return (
         
         <div className="welcomeBox">
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"></link>
+        
            <h1 className="welcomeTo">Welcome to Beach Bums</h1>
             <p className="welcomePara">Kick back, grab a margarita, turn on some Jimmy Buffet, and follow some people out to the beach.</p>
             <form>
