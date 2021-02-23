@@ -1,17 +1,36 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Profile = (props) => {
     console.log(props);
+    const [redirect,setRedirect] = useState(false)
+
+    let handleAccountDelete = () =>{
+        console.log('oi')
+        axios.delete(`${REACT_APP_SERVER_URL}/api/${props.user.id}`)
+        .then(response => {
+            console.log(response);
+            setRedirect(true)
+        })
+        .catch(error => console.log(error));     
+    }
+
     const userData = props.user ? 
     (<div>
         <h1>{props.user.name}</h1>
         <h3>{props.user.about}</h3>
-        <p>{props.user.age}</p>
+        <p>{props.user.birthdate}</p>
         <p>{props.user.location}</p>
         <p><strong>Email:</strong> {props.user.email}</p> 
         <p><strong>ID:</strong> {props.user.id}</p> 
-    </div>) : <h4>Loading...</h4>
+        <Link to='/profile/edit/'>Edit Profile</Link>
+        <Link onClick={handleAccountDelete}>Delete User</Link>
+    
+    </div>
+    
+    ) : <h4>Loading...</h4>
 
     const errorDiv = () => {
         return (
@@ -20,7 +39,8 @@ const Profile = (props) => {
             </div>
         );
     };
-    
+    if (redirect) return <Redirect to="/signup" />
+
     return (
         <div>
             { props.user ? userData : errorDiv() }
