@@ -1,30 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
-import { useState } from 'react'
 
-const Home = () => {
-    let [post, setPost] = useState('')
-    let [user, setUser] = useState('')
-    let [timestamps, setTimestamps] = useState('')
+const Home = (props) => {
+    let [content, setContent] = useState('')
+    let [author, setAuthor] = useState(props.user.id)
+    // let [photo, setPhoto] = useState(props.user.photo)
 
     const handleContent = (e) => {
-        setPost(e.target.value)
-    }
-
-    const handleUser = () => {
-        setUser(currentUser)
-    }
-
-    const handleTimestamps = () => {
-        setTimestamps(timestamps)
+        setContent(e.target.value)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        axios.post(`${REACT_APP_SERVER_URL}/post`, newPost)
-        .then(response)
+        let newPost = { content, author }
+ 
+        axios.post(`${REACT_APP_SERVER_URL}/post/new`, newPost)
+        .then(response => {
+            console.log(response)
+        })
     }
 
     return (
@@ -36,10 +31,10 @@ const Home = () => {
                                 <label htmlFor="postStatus" className="statusLabel">How You Doin' Dude?</label>
                             </div>
                             <div>
-                                <input className="statusBox" type="text"></input>
+                                <input className="statusBox" type="text" onChange={handleContent}></input>
                             </div>
                             <div>
-                                <input type="submit"></input>
+                                <input type="submit" onClick={handleSubmit}></input>
                             </div>
                         </form>
                     </div>
@@ -68,5 +63,6 @@ const Home = () => {
         </div>   
     );
 }
+
 
 export default Home;
