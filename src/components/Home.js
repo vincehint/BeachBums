@@ -1,29 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
-import { useState } from 'react'
 
-const Home = () => {
-    let [post, setPost] = useState('')
-    let [user, setUser] = useState('')
-    let [timestamps, setTimestamps] = useState('')
+const Home = (props) => {
+    let [content, setContent] = useState('')
+    let [comment, setComment] = useState('')
+    let [photo, setPhoto] = useState('')
+    let [like, setLike] = useState('')
+    let [author, setAuthor] = useState(props.user.id)
 
     const handleContent = (e) => {
-        setPost(e.target.value)
+        setContent(e.target.value)
     }
 
-    const handleUser = () => {
-        setUser(currentUser)
-    }
-
-    const handleTimestamps = () => {
-        setTimestamps(timestamps)
-    }
-
-    const handleSubmit = (e) => {
+    const handlePost = (e) => {
         e.preventDefault()
+        let newPost = {content, author, photo}
 
-        axios.post(`${REACT_APP_SERVER_URL}/post`, newPost)
+        axios.post(`${REACT_APP_SERVER_URL}/post/new`, newPost)
         .then(response)
     }
 
@@ -36,10 +30,10 @@ const Home = () => {
                                 <label htmlFor="postStatus" className="statusLabel">How You Doin' Dude?</label>
                             </div>
                             <div>
-                                <input className="statusBox" type="text"></input>
+                                <input className="statusBox" type="text" name="content"></input>
                             </div>
                             <div>
-                                <input type="submit"></input>
+                                <input type="submit" onClik="handlePost"></input>
                             </div>
                         </form>
                     </div>
