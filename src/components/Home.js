@@ -1,22 +1,68 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
-import { useState } from 'react'
 
+const Home = (props) => {
+    let [content, setContent] = useState('')
+    let [author, setAuthor] = useState(props.user.id)
+    // let [photo, setPhoto] = useState(props.user.photo)
 
+    const handleContent = (e) => {
+        setContent(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        let newPost = { content, author }
+ 
+        axios.post(`${REACT_APP_SERVER_URL}/post/new`, newPost)
+        .then(response => {
+            console.log(response)
+        })
+    }
 
     return (
-        <div>
-            <form>
-                <h1>What's on your mind?</h1>
-                <input type='text' onChange={handleContent}></input>
-                <input type='submit' onClick={handleSubmit}></input>
-            </form>
-            <p>Post 1</p>
-            <p>Post 2</p>
-            <p>Post 3</p>
-        </div>
+        <div className="home-wrapper">
+            <div className='homeRow'>
+                    <div className="postColumn">
+                        <form className="postForm">
+                            <div>
+                                <label htmlFor="postStatus" className="statusLabel">How You Doin' Dude?</label>
+                            </div>
+                            <div>
+                                <input className="statusBox" type="text" onChange={handleContent}></input>
+                            </div>
+                            <div>
+                                <input type="submit" onClick={handleSubmit}></input>
+                            </div>
+                        </form>
+                    </div>
+            
+            
+                <div className="followColumn">
+                    <ul>
+                                <li>I Follow This Person</li>
+                                <li>I Follow This Person</li>
+                                <li>I Follow This Person</li>
+                                <li>I Follow This Person</li>
+                            </ul>
+                </div>
+            </div>
+            <div className="feedRow">
+                <div className="homeColumn">
+                    <div className="feedColumn">
+                        <ul>
+                                <li>
+                                    <h3>posts will go here</h3>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>            
+        </div>   
     );
 }
+
 
 export default Home;
