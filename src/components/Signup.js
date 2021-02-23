@@ -91,7 +91,7 @@ const Signup = () => {
                                 </div>
                             </div>
                             <div className="birthDate">
-                                <label htmlFor="dateOfBirth">Birth Date</label>
+                                <label htmlFor="age">Birth Date</label>
                                 <div>
                                     <input type="date" name="age" value={age} onChange={handleAge} className="formControl"/>
                                 </div>
