@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
+import setAuthToken from '../utils/setAuthToken';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Signup = () => {
@@ -59,7 +61,7 @@ const Signup = () => {
         }
     }
 
-    if (redirect) return <Redirect to="/profile" />
+    if (redirect) return <Redirect to="/home" />
 
     return (
         <div className="signUpOne">
