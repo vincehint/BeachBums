@@ -51,21 +51,21 @@ body {
 }
 .login {
   /* -webkit-text-stroke: white 1px; */
-  background-color:rgb(26, 210, 210);
+  background-color:aquamarine;
   
   color: rgb(43, 89, 89);
-  border:solid 1px aquamarine;
+  border-color: aquamarine;
   border-radius: 7px;
   padding-left: 10px;
   padding-right: 10px;
 }
 .signup {
   /* -webkit-text-stroke: white 1px; */
-  background-color: rgb(26, 210, 210);
+  background-color: aquamarine;
   letter-spacing: 2px;
   
   color: rgb(43, 89, 89);
-  border:solid 1px aquamarine;
+  border-color: aqua;
   border-radius: 7px;
   padding-left: 10px;
   padding-right: 10px;
@@ -99,7 +99,7 @@ body {
 input.form-control {
   background-color: rgb(238, 224, 207);
   width: 300px;
-  text-align: center;
+  
 }
 .signUpContainer{
   width: 800px;
@@ -141,9 +141,10 @@ form {
 
 .submitButtonSignUp {
   background-color: aquamarine;
-  border: aquamarine;
+  border-color: aqua;
   margin: 5px;
   margin-bottom: 10px;
+  border-radius: 5px;
 }
 .signUpPara {
   font-size: 2em;
@@ -152,6 +153,8 @@ form {
 }
 /* Login Page Styling */
 .cardbody {
+  font-family: 'Dancing Script', cursive;
+  color: rgb(26, 210, 210);
   text-align: center;
   border-radius: 7px;
   border-color: rgb(168, 153, 143);
@@ -164,11 +167,16 @@ form {
 input.form-control {
   background-color: rgb(157, 138, 117);
 }
-.loginButton {
-  background-color: rgb(157, 138, 117);
-  width: 100px;
-  border-radius: 6px;
-  margin-bottom: 15px;
+.loginPageButton {
+  background-color: aquamarine;
+  border-radius: 5px;
+  border-color: aqua;
+}
+.loginPara {
+  font-size: 2.5em;
+}
+.loginForm {
+  font-size: 1.25em;
 }
 
 /* NavBar Styling */
@@ -197,6 +205,15 @@ input.form-control {
   color: #7b593e;
   font-size: 2em;
   -webkit-text-stroke: 1px #322415;
+}
+
+/* Home page styling */
+
+.postForm {
+  text-align: center;
+  height: 100px;
+  width: 600px;
+  background-color: rgb(41, 240, 210);
 }
 
 /* Footer Styling */

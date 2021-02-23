@@ -16,7 +16,9 @@ const Signup = () => {
     const handleUsername = (e) => {
         setUsername(e.target.value);
     }
-
+    const handlePhoto = (e) => {
+        setSelectedPhoto(e.target.value);
+    }
     const handleAge = (e) => {
         setAge(e.target.value);
     }
@@ -111,7 +113,7 @@ const Signup = () => {
                             <div>
                                 <label htmlFor="photo">Upload a Photo of Yourself</label>
                                 <div>
-                                    <input id="photoUpload" type="file" value={selectedPhoto} onClick={(e) => setSelectedPhoto(e.target.value[0])} className="formControl"/>
+                                    <input id="photoUpload" type="file" value={selectedPhoto} onChange={handlePhoto} className="formControl"/>
                                 </div>
                             </div>
                             <button type="submit" className="submitButtonSignUp">Submit</button>
