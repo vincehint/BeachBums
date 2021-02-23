@@ -28,6 +28,7 @@ const Home = () => {
     }
 
     return (
+<<<<<<< HEAD
         <div>
             <form>
                 <h1>What's on your mind?</h1>
@@ -38,6 +39,39 @@ const Home = () => {
             <p>Post 2</p>
             <p>Post 3</p>
         </div>
+=======
+        <div className="home-wrapper">
+            
+
+
+            
+                        <form className="postForm">
+                            <div>
+                                <label htmlFor="postStatus" className="statusLabel">How You Doin' Dude?</label>
+                            </div>
+                            <div>
+                                <input className="statusBox" type="text"></input>
+                            </div>
+                            <div>
+                                <input type="submit"></input>
+                            </div>
+                        </form>
+                   
+                            <ul>
+                                <li>I Follow This Person</li>
+                                <li>I Follow This Person</li>
+                                <li>I Follow This Person</li>
+                                <li>I Follow This Person</li>
+                            </ul>
+                        
+                            <ul>
+                                <li>
+                                    <h3>posts will go here</h3>
+                                </li>
+                            </ul>
+                        
+        </div>   
+>>>>>>> 482c91bc63c94e44b3ea3e03d23c1699ea877aa3
     );
 }
 

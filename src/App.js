@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Profile from './components/Profile';
+import EditProfile from './components/EditProfile';
 import Welcome from './components/Welcome';
 import Home from './components/Home';
 import Footer from './components/Footer';
@@ -40,6 +41,7 @@ function App() {
     console.log('nowCurrentUser is working...');
     setCurrentUser(userData);
     setIsAuthenticated(true);
+    console.log(`userID is ${currentUser}`)
   };
 
   const handleLogout = () => {
@@ -63,7 +65,8 @@ function App() {
             path="/login" 
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} 
           />
-          <PrivateRoute path="/home" user={currentUser} component={ Home } />
+          <PrivateRoute path="/home" component={ Home } user={currentUser} />
+          <PrivateRoute path="/profile/edit/" component={ EditProfile } user={currentUser} />
           <PrivateRoute path="/profile" component={ Profile } user={currentUser} />
           <Route exact path="/" component={ Welcome } />
         </Switch>
