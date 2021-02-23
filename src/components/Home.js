@@ -34,7 +34,7 @@ const Home = (props) => {
                                 <input className="statusBox" type="text" onChange={handleContent}></input>
                             </div>
                             <div>
-                                <input type="submit" onClick={handleSubmit}></input>
+                                <input type="submit" className="submitStatus" onClick={handleSubmit}></input>
                             </div>
                         </form>
                     </div>
@@ -42,17 +42,19 @@ const Home = (props) => {
             
                 <div className="followColumn">
                     <ul>
-                                <li>I Follow This Person</li>
-                                <li>I Follow This Person</li>
-                                <li>I Follow This Person</li>
-                                <li>I Follow This Person</li>
-                            </ul>
+                        <h3>Follow Suggestions</h3>
+                            <li>I Follow This Person</li>
+                            <li>I Follow This Person</li>
+                            <li>I Follow This Person</li>
+                            <li>I Follow This Person</li>
+                        </ul>
                 </div>
             </div>
             <div className="feedRow">
                 <div className="homeColumn">
                     <div className="feedColumn">
                         <ul className="feedList">
+                            
                                 <li className="feedPosts">
                                     <h3>posts will go here</h3>
                                 </li>
