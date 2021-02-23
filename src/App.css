@@ -209,12 +209,13 @@ input.form-control {
 
 /* Home page styling */
 
-.postForm {
-  text-align: center;
-  height: 100px;
-  width: 600px;
-  background-color: rgb(41, 240, 210);
+.home-wrapper {
+  margin: 15px;
+  background-color: rgb(26, 210, 210);
 }
+
+
+
 
 /* Footer Styling */
 .footer {
