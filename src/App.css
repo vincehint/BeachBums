@@ -87,14 +87,14 @@ body {
   text-align: center;
   border-radius: 5px;
   border-radius: 6px;
-  border: solid 3px rgb(168, 153, 143) 
+  border: solid 3px rgb(168, 153, 143); 
+  font-size: 1.5em;
 }
 .signUpForm {
   background-color: rgb(220, 205, 188);
   text-align: center;
   display: flexbox;
   border-radius: 6px;
-
 }
 input.form-control {
   background-color: rgb(238, 224, 207);
@@ -110,6 +110,7 @@ input.form-control {
   text-align: center;
   display: flex;
   padding: 50px;
+  font-family: 'Dancing Script', cursive;
   
 }
 #aboutMeBox {
@@ -119,6 +120,55 @@ input.form-control {
 form {
   text-align: center;
   display: inline-block;
+  color:rgb(26, 210, 210);
+  font-size: 1em;
+  -webkit-text-stroke: rgb(27, 88, 102) 1px;
+}
+
+.formControl {
+  margin: 5px;
+  border-radius: 3px;
+  border: solid;
+  border-color: rgb(168, 153, 143);
+  border-width: 2px;
+  box-shadow: rgb(168, 153, 143);
+  background-color: rgb(157, 138, 117);
+}
+#photoUpload {
+  text-align: center!important;
+  
+}
+
+.submitButtonSignUp {
+  background-color: aquamarine;
+  border: aquamarine;
+  margin: 5px;
+  margin-bottom: 10px;
+}
+.signUpPara {
+  font-size: 2em;
+  color: rgb(26, 210, 210);
+  -webkit-text-stroke: rgb(27, 88, 102) 1px;
+}
+/* Login Page Styling */
+.cardbody {
+  text-align: center;
+  border-radius: 7px;
+  border-color: rgb(168, 153, 143);
+  border-style: solid;
+  border-width: 3px;
+  background-color: rgb(220, 205, 188);
+  -webkit-text-stroke: rgb(27, 88, 102) 1px;
+}
+
+input.form-control {
+  background-color: rgb(157, 138, 117);
+}
+.loginButton {
+  background-color: rgb(157, 138, 117);
+  width: 100px;
+  border-radius: 6px;
+  margin-bottom: 15px;
 }
 
 /* NavBar Styling */
@@ -134,11 +184,20 @@ form {
   text-align: left;
   color: #7b593e;
   -webkit-text-stroke: 1.5px #322415;
-  font-size: 4em;
+  font-size: 4em!important;
   text-decoration: none!important;
   color:black!important;
 }
-
+.navbar-brand {
+  color: #7b593e;
+  font-size: 4em;
+  -webkit-text-stroke: 1.5px #322415;
+}
+.nav-link {
+  color: #7b593e;
+  font-size: 2em;
+  -webkit-text-stroke: 1px #322415;
+}
 
 /* Footer Styling */
 .footer {
