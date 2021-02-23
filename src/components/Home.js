@@ -2,16 +2,18 @@ import React, { useState } from 'react'
 import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-
 const Home = (props) => {
     let [content, setContent] = useState('')
-    let [author, setAuthor] = useState(props.user.author)
+    let [author, setAuthor] = useState(props.user.id)
     // let [photo, setPhoto] = useState(props.user.photo)
+
     const handleContent = (e) => {
         setContent(e.target.value)
     }
+
     const handleSubmit = (e) => {
         e.preventDefault()
+
         let newPost = { content, author }
  
         axios.post(`${REACT_APP_SERVER_URL}/post/new`, newPost)
@@ -67,5 +69,6 @@ const Home = (props) => {
         </div>   
     );
 }
+
 
 export default Home;
