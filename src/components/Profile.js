@@ -24,8 +24,6 @@ const Profile = (props) => {
         <image>{props.user.photo}</image>
         <p><strong>Email:</strong> {props.user.email}</p> 
         <p><strong>ID:</strong> {props.user.id}</p> 
-        
-    
     </div>
     
     ) : <h4>Loading...</h4>
@@ -42,6 +40,7 @@ const Profile = (props) => {
     return (
         <div className="profilePage">
             <div className="profileContainer" >
+                
                 <img src={props.user.photo} alt="Users Profile Photo"/>
                 <h1 id="helloUser">Hello, {props.user.username}</h1>
                 <p>Birthday: {props.user.birthdate}</p>
@@ -49,7 +48,7 @@ const Profile = (props) => {
                 <p>About Me: {props.user.about}</p>
                 {/* { props.user ? userData : errorDiv() } */}
                 <div className="crudButtonsProfile">
-                    <Link className="editButtonUser" to='/profile/edit/'>Edit Profile</Link>
+                    <Link className="editButtonUser" to='/profile/edit'>Edit Profile</Link>
                     <Link className="deleteButtonUser" onClick={handleAccountDelete}>Delete User</Link>
                 </div>
             </div>  
