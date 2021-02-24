@@ -3,6 +3,7 @@ import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 const Home = (props) => {
+    console.log(props)
     let [content, setContent] = useState('')
     let [author, setAuthor] = useState(props.user.id)
     // let [photo, setPhoto] = useState(props.user.photo)
@@ -54,7 +55,7 @@ const Home = (props) => {
                     <div className="feedColumn">
                         <ul>
                                 <li>
-                                    <h3>posts will go here</h3>
+                                    <h3></h3>
                                 </li>
                             </ul>
                     </div>
