@@ -56,14 +56,16 @@ const Home = (props) => {
                         <ul className="feedList">
                             
                                 <li className="feedPosts">
-                                    <h3>posts will go here</h3>
+                                    <div className="homeFeedPost">
+                                        <h3>posts will go here</h3>
+                                    </div>
+                                    <div className="commentContainer">
+                                        <label htmlFor="comment">Comment</label>
+                                        <input className="comment" type="text"></input>
+                                        <input className="submitButtonComment" type="submit"></input>
+                                    </div>
                                 </li>
-                                <li className="feedPosts">
-                                    <h3>posts will go here</h3>
-                                </li>
-                                <li className="feedPosts">
-                                    <h3>posts will go here</h3>
-                                </li>
+                                
                             </ul>
                     </div>
                 </div>
