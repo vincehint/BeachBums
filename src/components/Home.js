@@ -10,15 +10,7 @@ const Home = (props) => {
     // let [like, setLike] = useState('')
     let [following, setFollowing] = useState(props.user.following)
     let [userPosts, setUserPosts] = useState([props.user.posts])
-    let [allUsers, setAllUsers] = useState([])
     
-    useEffect(()=>{
-        axios.get(`${REACT_APP_SERVER_URL}/api/users/${author}`)
-        .then(response => {
-            setAllUsers(response)
-        })
-        .catch(error => console.log(error)); 
-      },[])
     useEffect(()=>{
     axios.get(`${REACT_APP_SERVER_URL}/post/author/${author}`)
     .then(response => {
@@ -100,4 +92,7 @@ const Home = (props) => {
         </div>  
     )
 }
+
 export default Home;
+
+
