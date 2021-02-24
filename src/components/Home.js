@@ -11,7 +11,6 @@ const Home = (props) => {
     let [following, setFollowing] = useState(props.user.following)
     let [userPosts, setUserPosts] = useState([props.user.posts])
     
-    
     useEffect(()=>{
     axios.get(`${REACT_APP_SERVER_URL}/post/author/${author}`)
     .then(response => {
@@ -93,20 +92,7 @@ const Home = (props) => {
         </div>  
     )
 }
+
 export default Home;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
