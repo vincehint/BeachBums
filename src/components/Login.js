@@ -37,7 +37,7 @@ const Login = (props) => {
         .catch(error => console.log(`Login error`, error));
     }
 
-    if (props.user) return <Redirect to="/profile" user={props.user} />;
+    if (props.user) return <Redirect to="/home" user={props.user} />;
 
     return (
         <div className="loginForm">
