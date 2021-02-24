@@ -37,9 +37,9 @@ const EditProfile = (props) => {
         axios.post(`${REACT_APP_SERVER_URL}/api/profile/edit/`, newUser)
         .then(response => {
             console.log(response);
-            setRedirect(true);
-        })
-        .catch(error => console.log(error));     
+                setRedirect(true);
+            })
+            .catch(error => console.log(error));    
     }
 
     if (redirect) return <Redirect to="/profile" />

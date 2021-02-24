@@ -1,26 +1,53 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { v4 as uniqueID } from "uuid";
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 const Home = (props) => {
     console.log(props)
     let [content, setContent] = useState('')
+    let [photo, setPhoto] = useState('')
     let [author, setAuthor] = useState(props.user.id)
-    // let [photo, setPhoto] = useState(props.user.photo)
+    // let [comment, setComment] = useState('')
+    // let [like, setLike] = useState('')
+    let [following, setFollowing] = useState(props.user.following)
+    let [userPosts, setUserPosts] = useState([props.user.posts])
+    let [allUsers, setAllUsers] = useState([])
+    
 
+    // useEffect(()=>{
+    //     axios.get(`${REACT_APP_SERVER_URL}/api/users/${author}`)
+    //     .then(response => {
+    //         setAllUsers(response)
+    //     })
+    //     .catch(error => console.log(error)); 
+    //   },[])
+
+    useEffect(()=>{
+    axios.get(`${REACT_APP_SERVER_URL}/post/author/${author}`)
+    .then(response => {
+        setUserPosts(response)
+    })
+    .catch(error => console.log(error)); 
+    },[])
+    
     const handleContent = (e) => {
         setContent(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const handleAddPost = (e) => {
         e.preventDefault()
-
-        let newPost = { content, author }
+        let newPost = {content, author, photo}
  
         axios.post(`${REACT_APP_SERVER_URL}/post/new`, newPost)
-        .then(response => {
-            console.log(response)
+        .then(() => {
+            axios.get(`${REACT_APP_SERVER_URL}/post/author/${author}`)
+            .then(posts =>{
+                setUserPosts([...userPosts,posts])
+            })
+            .catch(error => console.log(error)); 
         })
+        .catch(error => console.log(error)); 
     }
 
     return (
@@ -35,6 +62,7 @@ const Home = (props) => {
                                 <input className="statusBox" type="text" onChange={handleContent}></input>
                             </div>
                             <div>
+                                <input type="submit" onClick={handleAddPost}></input>
                                 <input type="submit" className="submitStatus" onClick={handleSubmit}></input>
                             </div>
                         </form>
@@ -43,6 +71,16 @@ const Home = (props) => {
             
                 <div className="followColumn">
                     <ul>
+                                <li>I Follow This Person</li>
+                                <li>I Follow This Person</li>
+                                {/* {allUsers.forEach(user =>{
+                                    return (
+                                        <li key={uniqueID()}>{user.username} <button value='Follow'></button></li>
+                                    )
+                                })} */}
+                                
+                                <li>I Follow This Person</li>
+                            </ul>
                         <h3>Follow Suggestions</h3>
                             <li>I Follow This Person</li>
                             <li>I Follow This Person</li>
@@ -57,14 +95,16 @@ const Home = (props) => {
                         <ul className="feedList">
                             
                                 <li className="feedPosts">
-                                    <h3>posts will go here</h3>
+                                    <div className="homeFeedPost">
+                                        <h3>posts will go here</h3>
+                                    </div>
+                                    <div className="commentContainer">
+                                        <label htmlFor="comment">Comment</label>
+                                        <input className="comment" type="text"></input>
+                                        <input className="submitButtonComment" type="submit"></input>
+                                    </div>
                                 </li>
-                                <li className="feedPosts">
-                                    <h3>posts will go here</h3>
-                                </li>
-                                <li className="feedPosts">
-                                    <h3>posts will go here</h3>
-                                </li>
+                                
                             </ul>
                     </div>
                 </div>
