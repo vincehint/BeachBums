@@ -62,7 +62,6 @@ const Home = (props) => {
                             </div>
                             <div>
                                 <input type="submit" onClick={handleAddPost}></input>
-                                <input type="submit" className="submitStatus" onClick={handleSubmit}></input>
                             </div>
                         </form>
                     </div>
@@ -85,7 +84,7 @@ const Home = (props) => {
                             <li>I Follow This Person</li>
                             <li>I Follow This Person</li>
                             <li>I Follow This Person</li>
-                        </ul>
+                        
                 </div>
             </div>
             <div className="feedRow">
