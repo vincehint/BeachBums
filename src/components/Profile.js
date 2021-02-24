@@ -17,14 +17,14 @@ const Profile = (props) => {
 
     const userData = props.user ? 
     (<div>
-        <h1>{props.user.name}</h1>
+        <h1>{props.user.username}</h1>
         <h3>{props.user.about}</h3>
         <p>{props.user.birthdate}</p>
         <p>{props.user.location}</p>
+        <image>{props.user.photo}</image>
         <p><strong>Email:</strong> {props.user.email}</p> 
         <p><strong>ID:</strong> {props.user.id}</p> 
-        <Link to='/profile/edit/'>Edit Profile</Link>
-        <Link onClick={handleAccountDelete}>Delete User</Link>
+        
     
     </div>
     
@@ -40,8 +40,36 @@ const Profile = (props) => {
     // if (redirect) return <Redirect to="/signup" />
 
     return (
-        <div>
-            { props.user ? userData : errorDiv() }
+        <div className="profilePage">
+            <div className="profileContainer" >
+                <img src={props.user.photo} alt="Users Profile Photo"/>
+                <h1 id="helloUser">Hello, {props.user.username}</h1>
+                <p>Birthday: {props.user.birthdate}</p>
+                <p>Located In: {props.user.location}</p>
+                <p>About Me: {props.user.about}</p>
+                {/* { props.user ? userData : errorDiv() } */}
+                <div className="crudButtonsProfile">
+                    <Link className="editButtonUser" to='/profile/edit/'>Edit Profile</Link>
+                    <Link className="deleteButtonUser" onClick={handleAccountDelete}>Delete User</Link>
+                </div>
+            </div>  
+            <div className="myPostContainer">
+                <ul className="feedListProfile">
+                    <div className="postContainer">
+                        <li className="myPosts">
+                            <div className="post">
+                                <h2>Author Name </h2>
+                                <p>{props.user.posts}Some Content Here</p>
+                            </div>
+                            <div className="commentContainer">
+                                <label htmlFor="comment">Comment</label>
+                                <input className="comment" type="text"></input>
+                                <input className="submitButtonComment" type="submit"></input>
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            </div> 
         </div>
     );
 

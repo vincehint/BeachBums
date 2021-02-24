@@ -62,6 +62,7 @@ const Home = (props) => {
                             </div>
                             <div>
                                 <input type="submit" onClick={handleAddPost}></input>
+                                <input type="submit" className="submitStatus" onClick={handleSubmit}></input>
                             </div>
                         </form>
                     </div>
@@ -79,21 +80,30 @@ const Home = (props) => {
                                 
                                 <li>I Follow This Person</li>
                             </ul>
+                        <h3>Follow Suggestions</h3>
+                            <li>I Follow This Person</li>
+                            <li>I Follow This Person</li>
+                            <li>I Follow This Person</li>
+                            <li>I Follow This Person</li>
+                        </ul>
                 </div>
             </div>
             <div className="feedRow">
                 <div className="homeColumn">
                     <div className="feedColumn">
                         <ul className="feedList">
+                            
                                 <li className="feedPosts">
-                                    <h3>posts will go here</h3>
+                                    <div className="homeFeedPost">
+                                        <h3>posts will go here</h3>
+                                    </div>
+                                    <div className="commentContainer">
+                                        <label htmlFor="comment">Comment</label>
+                                        <input className="comment" type="text"></input>
+                                        <input className="submitButtonComment" type="submit"></input>
+                                    </div>
                                 </li>
-                                <li className="feedPosts">
-                                    <h3>posts will go here</h3>
-                                </li>
-                                <li className="feedPosts">
-                                    <h3>posts will go here</h3>
-                                </li>
+                                
                             </ul>
                     </div>
                 </div>
