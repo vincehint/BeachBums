@@ -210,11 +210,13 @@ input.form-control {
 /* Home page styling */
 
 .home-wrapper {
+  font-family: 'Dancing Script', cursive;
   margin: 15px;
   background-color: #6faf95;
   outline-color: #2db8a5;
   border-width: 4px solid;
   border-radius: 7px;
+  text-align: center;
 }
 .homeRow {
   display: flex;
@@ -237,6 +239,7 @@ input.form-control {
   flex: 1;
   height: 100%;
   margin: 10px;
+  margin-left: 0px;
   border:4px solid #82775a;
   border-radius: 5px;
 }
@@ -254,11 +257,15 @@ input.form-control {
   margin: 15px;
   border:#d5d1bd 2px solid;
 }
-.feedList ul {
+ul.feedList {
   list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  margin-left: 0px;
 }
 .feedList li {
   list-style-type: none;
+  
 }
 
 .statusLabel {
@@ -280,6 +287,68 @@ input.form-control {
   margin: 10px;
 }
 
+/* Profile Page Styling */
+
+Link {
+  background-color: #2db8a5;
+  border-radius: 5px;
+  border: 2px solid white;
+  margin: 10px;
+  color: #82775a;
+}
+
+.editButtonUser {
+  background-color: #2db8a5;
+  width: 85px;
+  height: 50px;
+  border-radius: 5px;
+  border:2px solid #85bda6;
+  margin: 10px;
+  padding: 5px;
+  color: #82775a;
+}
+
+.deleteButtonUser {
+  background-color: #2db8a5;
+  width: 85px;
+  height: 50px;
+  border-radius: 5px;
+  border:2px solid #85bda6;
+  margin: 10px;
+  padding: 5px;
+  color: #82775a;
+}
+
+.profileContainer {
+  text-align: center;
+  background-color:#ccc5ac;
+  border: 3px solid #82775a;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.myPostContainer {
+  text-align: center;
+  background-color:#ccc5ac;
+  border: 3px solid #82775a;
+  padding: 15px;
+  border-radius: 8px;
+}
+ul.feedListProfile {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+li {
+  list-style-type: none;
+}
+
+.myPosts {
+  background-color:#e0e7d2 ;
+  margin: 15px;
+  border:#d5d1bd 2px solid;
+}
 /* Footer Styling */
 .footer {
   position: absolute;

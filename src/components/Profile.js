@@ -19,14 +19,14 @@ const Profile = (props) => {
 
     const userData = props.user ? 
     (<div>
-        <h1>{props.user.name}</h1>
+        <h1>{props.user.username}</h1>
         <h3>{props.user.about}</h3>
         <p>{props.user.birthdate}</p>
         <p>{props.user.location}</p>
+        <image>{props.user.photo}</image>
         <p><strong>Email:</strong> {props.user.email}</p> 
         <p><strong>ID:</strong> {props.user.id}</p> 
-        <Link to='/profile/edit/'>Edit Profile</Link>
-        <Link onClick={handleAccountDelete}>Delete User</Link>
+        
     
     </div>
     
@@ -42,8 +42,26 @@ const Profile = (props) => {
     if (redirect) return <Redirect to="/signup" />
 
     return (
-        <div>
-            { props.user ? userData : errorDiv() }
+        <div className="profilePage">
+            <div className="profileContainer" >
+                <h1>Hello, {props.user.username}</h1>
+                {/* <image src={props.user.photo}></image> */}
+                <p>Birthday: {props.user.birthdate}</p>
+                <p>Located In: {props.user.location}</p>
+                <p>About Me: {props.user.about}</p>
+                {/* { props.user ? userData : errorDiv() } */}
+                <div className="crudButtonsProfile">
+                    <Link className="editButtonUser" to='/profile/edit/'>Edit Profile</Link>
+                    {/* <Link className="deleteButtonUser" onClick={handleAccountDelete}>Delete User</Link> */}
+                </div>
+            </div>  
+            <div className="myPostContainer">
+                <ul className="feedListProfile">
+                    <li className="myPosts">My Post 1</li>
+                    <li className="myPosts">My Post 2</li>
+                    <li className="myPosts">My Post 3</li>
+                </ul>
+            </div> 
         </div>
     );
 
