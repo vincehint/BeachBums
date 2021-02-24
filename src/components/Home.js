@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { v4 as uniqueID } from "uuid";
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
-
 const Home = (props) => {
     let [content, setContent] = useState('')
     let [photo, setPhoto] = useState('')
@@ -11,17 +10,8 @@ const Home = (props) => {
     // let [like, setLike] = useState('')
     let [following, setFollowing] = useState(props.user.following)
     let [userPosts, setUserPosts] = useState([props.user.posts])
-    let [allUsers, setAllUsers] = useState([])
     
-
-    // useEffect(()=>{
-    //     axios.get(`${REACT_APP_SERVER_URL}/api/users/${author}`)
-    //     .then(response => {
-    //         setAllUsers(response)
-    //     })
-    //     .catch(error => console.log(error)); 
-    //   },[])
-
+    
     useEffect(()=>{
     axios.get(`${REACT_APP_SERVER_URL}/post/author/${author}`)
     .then(response => {
@@ -33,7 +23,6 @@ const Home = (props) => {
     const handleContent = (e) => {
         setContent(e.target.value)
     }
-
     const handleAddPost = (e) => {
         e.preventDefault()
         let newPost = {content, author, photo}
@@ -48,8 +37,8 @@ const Home = (props) => {
         })
         .catch(error => console.log(error)); 
     }
-
     return (
+        
         <div className="home-wrapper">
             <div className='homeRow'>
                     <div className="postColumn">
@@ -61,31 +50,24 @@ const Home = (props) => {
                                 <input className="statusBox" type="text" onChange={handleContent}></input>
                             </div>
                             <div>
-                                <input type="submit" onClick={handleAddPost}></input>
-                                <input type="submit" className="submitStatus" onClick={handleSubmit}></input>
+                                <input type="submit" className="submitStatus" onClick={handleAddPost}></input>
                             </div>
                         </form>
                     </div>
-            
-            
                 <div className="followColumn">
+                    <h3>Follow Suggestions</h3>
                     <ul>
-                                <li>I Follow This Person</li>
-                                <li>I Follow This Person</li>
-                                {/* {allUsers.forEach(user =>{
-                                    return (
-                                        <li key={uniqueID()}>{user.username} <button value='Follow'></button></li>
-                                    )
-                                })} */}
-                                
-                                <li>I Follow This Person</li>
-                            </ul>
-                        <h3>Follow Suggestions</h3>
-                            <li>I Follow This Person</li>
-                            <li>I Follow This Person</li>
-                            <li>I Follow This Person</li>
-                            <li>I Follow This Person</li>
-                        </ul>
+                        <li>I Follow This Person</li>
+                        <li>I Follow This Person</li>
+                        {/* {allUsers.forEach(user =>{
+                            return (
+                                <li key={uniqueID()}>{user.username} <button value='Follow'></button></li>
+                           )
+                        })} */}
+                            
+                       
+                   
+                    </ul>
                 </div>
             </div>
             <div className="feedRow">
@@ -108,9 +90,23 @@ const Home = (props) => {
                     </div>
                 </div>
             </div>            
-        </div>   
-    );
+        </div>  
+    )
 }
-
-
 export default Home;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

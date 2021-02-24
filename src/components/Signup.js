@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const Signup = () => {
+const Signup = (props) => {
     let [email, setEmail] = useState('')
     let [password, setPassword] = useState('');
     let [confirmPassword, setConfirmPassword] = useState('');
@@ -55,6 +55,15 @@ const Signup = () => {
             axios.post(`${REACT_APP_SERVER_URL}/api/signup`, newUser)
             .then(response => {
                 console.log(response);
+                const { token } = response.data;
+                // Save token to localStorage
+                localStorage.setItem('jwtToken', token);
+                // Set token to auth header
+                setAuthToken(token);
+                // Decode token to get the user data
+                const decoded = jwt_decode(token);
+                // Set current user
+                props.nowCurrentUser(decoded);
                 setRedirect(true);
             })
             .catch(error => console.log(error));
