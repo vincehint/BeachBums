@@ -41,16 +41,21 @@ const Profile = (props) => {
     return (
         <div className="profilePage">
             <div className="profileContainer" >
-                
-                <img src={props.user.photo} alt="Users Profile Photo"/>
+                <div className="profilePicture">
+                    <img src={props.user.photo} alt="Users Profile Photo"/>
+                </div>
                 <h1 id="helloUser">Hello, {props.user.username}</h1>
                 <p>Birthday: {props.user.birthdate}</p>
                 <p>Located In: {props.user.location}</p>
                 <p>About Me: {props.user.about}</p>
                 {/* { props.user ? userData : errorDiv() } */}
                 <div className="crudButtonsProfile">
-                    <Link className="editButtonUser" to='/profile/edit'>Edit Profile</Link>
-                    <Link className="deleteButtonUser" onClick={handleAccountDelete}>Delete User</Link>
+                    <div className="editProfile">   
+                        <Link className="editButtonUser" to='/profile/edit'>Edit Profile</Link>
+                    </div> 
+                    <div className="deleteProfile">
+                        <button className="deleteButtonUser" onClick={handleAccountDelete}>Delete User</button>
+                    </div>
                 </div>
             </div>  
             <div className="myPostContainer">
