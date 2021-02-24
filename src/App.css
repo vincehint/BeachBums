@@ -320,15 +320,25 @@ Link {
 }
 
 .profileContainer {
+  color: #5e5641;
+  font-family: 'Dancing Script', cursive;
   text-align: center;
   background-color:#ccc5ac;
   border: 3px solid #82775a;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 15px;
+  
+}
+#helloUser {
+  letter-spacing:0.05em;
+  text-transform: capitalize;
+  text-shadow: 1px 1px 0px rgba(101, 101, 101, 0.5), -1px -1px 0px rgb(62, 61, 61), 2px 4px 2px rgb(168, 153, 143);
 }
 
+
 .myPostContainer {
+  font-family: 'Dancing Script', cursive;
   text-align: center;
   background-color:#ccc5ac;
   border: 3px solid #82775a;

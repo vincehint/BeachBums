@@ -44,22 +44,32 @@ const Profile = (props) => {
     return (
         <div className="profilePage">
             <div className="profileContainer" >
-                <h1>Hello, {props.user.username}</h1>
-                {/* <image src={props.user.photo}></image> */}
+                <img src={props.user.photo} alt="Users Profile Photo"/>
+                <h1 id="helloUser">Hello, {props.user.username}</h1>
                 <p>Birthday: {props.user.birthdate}</p>
                 <p>Located In: {props.user.location}</p>
                 <p>About Me: {props.user.about}</p>
                 {/* { props.user ? userData : errorDiv() } */}
                 <div className="crudButtonsProfile">
                     <Link className="editButtonUser" to='/profile/edit/'>Edit Profile</Link>
-                    {/* <Link className="deleteButtonUser" onClick={handleAccountDelete}>Delete User</Link> */}
+                    <Link className="deleteButtonUser" onClick={handleAccountDelete}>Delete User</Link>
                 </div>
             </div>  
             <div className="myPostContainer">
                 <ul className="feedListProfile">
-                    <li className="myPosts">My Post 1</li>
-                    <li className="myPosts">My Post 2</li>
-                    <li className="myPosts">My Post 3</li>
+                    <div className="postContainer">
+                        <li className="myPosts">
+                            <div className="post">
+                                <h2>Author Name </h2>
+                                <p>{props.user.posts}Some Content Here</p>
+                            </div>
+                            <div className="commentContainer">
+                                <label htmlFor="comment">Comment</label>
+                                <input className="comment" type="text"></input>
+                                <input className="submitButtonComment" type="submit"></input>
+                            </div>
+                        </li>
+                    </div>
                 </ul>
             </div> 
         </div>
