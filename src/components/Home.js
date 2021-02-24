@@ -49,6 +49,11 @@ const Home = (props) => {
         })
         .catch(error => console.log(error)); 
     }
+    
+    let postArr = [props.user.posts]
+    let postFeed = postArr.map((item) => {
+        return <li>{item}</li>
+    })
 
     return (
         <div className="home-wrapper">
@@ -63,13 +68,13 @@ const Home = (props) => {
                             </div>
                             <div>
                                 <input type="submit" onClick={handleAddPost}></input>
-                                <input type="submit" className="submitStatus" onClick={handleSubmit}></input>
                             </div>
                         </form>
                     </div>
             
             
                 <div className="followColumn">
+                                <h3>Follow Suggestions</h3>
                     <ul>
                                 <li>I Follow This Person</li>
                                 <li>I Follow This Person</li>
@@ -78,15 +83,8 @@ const Home = (props) => {
                                         <li key={uniqueID()}>{user.username} <button value='Follow'></button></li>
                                     )
                                 })} */}
-                                
-                                <li>I Follow This Person</li>
                             </ul>
-                        <h3>Follow Suggestions</h3>
-                            <li>I Follow This Person</li>
-                            <li>I Follow This Person</li>
-                            <li>I Follow This Person</li>
-                            <li>I Follow This Person</li>
-                        </ul>
+
                 </div>
             </div>
             <div className="feedRow">
@@ -96,7 +94,7 @@ const Home = (props) => {
                             
                                 <li className="feedPosts">
                                     <div className="homeFeedPost">
-                                        <h3>posts will go here</h3>
+                                        <h3>{postFeed}</h3>
                                     </div>
                                     <div className="commentContainer">
                                         <label htmlFor="comment">Comment</label>
