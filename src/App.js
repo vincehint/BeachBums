@@ -41,7 +41,6 @@ function App() {
     console.log('nowCurrentUser is working...');
     setCurrentUser(userData);
     setIsAuthenticated(true);
-    console.log(`userID is ${currentUser}`)
   };
 
   const handleLogout = () => {
@@ -67,7 +66,7 @@ function App() {
           />
           <PrivateRoute path="/home" component={ Home } user={currentUser} />
           <PrivateRoute path="/profile/edit/" component={ EditProfile } user={currentUser} />
-          <PrivateRoute path="/profile" component={ Profile } user={currentUser} />
+          <PrivateRoute path="/profile" component={ Profile } user={currentUser} handleLogout={handleLogout}/>
           <Route exact path="/" component={ Welcome } />
         </Switch>
       </div>

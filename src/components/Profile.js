@@ -1,18 +1,16 @@
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Profile = (props) => {
     console.log(props);
-    const [redirect,setRedirect] = useState(false)
+    // const [redirect,setRedirect] = useState(false)
 
     let handleAccountDelete = () =>{
-        console.log('oi')
         axios.delete(`${REACT_APP_SERVER_URL}/api/${props.user.id}`)
-        .then(response => {
-            console.log(response);
-            setRedirect(true)
+        .then(() => {
+            props.handleLogout()
         })
         .catch(error => console.log(error));     
     }
@@ -39,7 +37,7 @@ const Profile = (props) => {
             </div>
         );
     };
-    if (redirect) return <Redirect to="/signup" />
+    // if (redirect) return <Redirect to="/signup" />
 
     return (
         <div>
