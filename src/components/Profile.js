@@ -38,6 +38,12 @@ const Profile = (props) => {
         );
     };
 
+    let profileData = props.user.posts
+
+    let profileFeed = profileData.map((post, i) => {
+        return (<p key={i}>{props.user.username} {post.createdAt} {post.content}</p>)
+    })
+
     return (
         <div className="profilePage">
             <div className="profileContainer" >
@@ -50,6 +56,7 @@ const Profile = (props) => {
                 <p>About Me: {props.user.about}</p>
                 {/* { props.user ? userData : errorDiv() } */}
                 <div className="crudButtonsProfile">
+
                     <div className="editProfile">   
                         <Link className="editButtonUser" to='/profile/edit'>Edit Profile</Link>
                     </div> 
@@ -63,8 +70,8 @@ const Profile = (props) => {
                     <div className="postContainer">
                         <li className="myPosts">
                             <div className="post">
-                                <h2>Author Name </h2>
-                                <p>{props.user.posts}Some Content Here</p>
+                                <h2>Your Posts</h2>
+                                <ul>{profileFeed}</ul>
                             </div>
                             <div className="commentContainer">
                                 <label htmlFor="comment">Comment</label>
