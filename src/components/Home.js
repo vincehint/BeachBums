@@ -100,13 +100,14 @@ const Home = (props) => {
                     <h3>Follow Suggestions</h3>
                     <ul>
                         
-                        {/* {booleanOtherUsers.map((user,index)=> {
+                        {users_other.map((user,index)=> {
                             return (
                                 <li key={index}>
                                     {user.username}
+                                    <button>Follow</button>
                                 </li>
                             )
-                        })} */}
+                        })}
                         {/* {allUsers.map(user => {
                             // if (user._id !== props.user.id){
                             //     console.log(user._id)
