@@ -41,7 +41,19 @@ const Profile = (props) => {
     let profileData = props.user.posts
 
     let profileFeed = profileData.map((post, i) => {
-        return (<p key={i}>{props.user.username} {post.createdAt} {post.content}</p>)
+        return (<p key={i}>
+            <ul className="profileFeed">
+                <li className='postContainerProfile'>
+                    <div className="postAuthor">
+                        {props.user.username} 
+                        {post.createdAt} 
+                    </div>
+                    <div className="postContent">
+                        {post.content}
+                    </div>
+                </li>
+            </ul>
+            </p>)
     })
 
     return (
@@ -70,8 +82,14 @@ const Profile = (props) => {
                     <div className="postContainer">
                         <li className="myPosts">
                             <div className="post">
-                                <h2>Your Posts</h2>
-                                <ul>{profileFeed}</ul>
+                                <div className="postsHeader">
+                                    <h2>Your Posts</h2>
+                                </div>
+                                <div className="postListContainer">
+                                    <div>
+                                        {profileFeed}
+                                    </div>  
+                                </div>
                             </div>
                             <div className="commentContainer">
                                 <label htmlFor="comment">Comment</label>

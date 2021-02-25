@@ -290,6 +290,15 @@ ul.feedList {
   margin: 10px;
 }
 
+.homeFeedContainer {
+  margin: auto;
+  margin-top: 10px;
+  width: 70%;
+  background-color: #2db8a5;
+  border:#bbad95 2px solid;
+  border-radius: 7px;
+}
+
 /* Profile Page Styling */
 
 Link {
@@ -350,13 +359,27 @@ Link {
   text-transform: capitalize;
   text-shadow: 1px 1px 0px rgba(101, 101, 101, 0.5), -1px -1px 0px rgb(62, 61, 61), 2px 4px 2px rgb(168, 153, 143);
 }
+.postsHeader {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  color: #acffe3;
+  -webkit-text-stroke: 1px #1e7c70;
+  font-size: x-large;
+}
+.profileFeed {
+  margin: auto;
+  width: 70%;
+  background-color: #2db8a5;
+  border: 3px solid #a7e6cd ;
+  text-align: center;
+  border-radius: 7px;
 
-
+}
 .myPostContainer {
   font-family: 'Dancing Script', cursive;
   text-align: center;
   background-color:#ccc5ac;
-  border: 3px solid #82775a;
+  border: 3px solid #afa588;
   padding: 15px;
   border-radius: 8px;
 }

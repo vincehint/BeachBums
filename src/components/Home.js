@@ -70,12 +70,19 @@ const Home = (props) => {
 
     let postData = allPosts.map((post, i) => {
         return (
-            <p key={i}>{post.username} {post.content}
-                <form>
-                    <input type="text" placeholder="leave a comment"></input>
-                    <input type="submit" onClick={handleAddComment}></input>
-                </form>
-            </p>
+            <div className="homeFeedContainer">
+                <p key={i}>{post.username} {post.content}</p>
+                    <form>
+                        <div>
+                            <input type="text" placeholder="leave a comment"></input>
+                        </div>
+                        <div>
+                            <input type="submit" onClick={handleAddComment}></input>
+                        </div>
+                    </form>
+                
+            </div>
+                
         )
     })
 
