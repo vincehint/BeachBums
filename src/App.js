@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
+import axios from 'axios'
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -11,6 +12,8 @@ import Welcome from './components/Welcome';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import './App.css';
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
+
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = localStorage.getItem('jwtToken');
@@ -24,6 +27,7 @@ function App() {
   // set state values
   let [currentUser, setCurrentUser] = useState("");
   let [isAuthenticated, setIsAuthenticated] = useState(true);
+  let [allUsers, setAllUsers] = useState([])
 
   useEffect(() => {
     let token;
@@ -36,6 +40,14 @@ function App() {
       setIsAuthenticated(true);
     }
   }, []);
+
+  useEffect(async ()=>{
+    await axios.get(`${REACT_APP_SERVER_URL}/api/users`)
+    .then(response => {
+        setAllUsers(response)
+    })
+    .catch(error => console.log(error)); 
+  },[])
 
   const nowCurrentUser = (userData) => {
     console.log('nowCurrentUser is working...');
@@ -59,12 +71,12 @@ function App() {
       <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
       <div className="container mt-5">
         <Switch>
-          <Route path="/signup" component={ Signup } />
+          <Route path="/signup" render={ (props) => <Signup {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>}  />
           <Route 
             path="/login" 
             render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} 
           />
-          <PrivateRoute path="/home" component={ Home } user={currentUser} />
+          <PrivateRoute path="/home" component={ Home } user={currentUser} allUsers={allUsers}/>
           <PrivateRoute path="/profile/edit/" component={ EditProfile } user={currentUser} />
           <PrivateRoute path="/profile" component={ Profile } user={currentUser} handleLogout={handleLogout}/>
           <Route exact path="/" component={ Welcome } />
