@@ -76,10 +76,10 @@ const Home = (props) => {
                 </div>    
                     <form>
                         <div>
-                            <input type="text" placeholder="leave a comment"></input>
+                            <input className="commentBox" type="text" placeholder="leave a comment"></input>
                         </div>
                         <div>
-                            <input type="submit" onClick={handleAddComment}></input>
+                            <input className="submitComment" type="submit" onClick={handleAddComment}></input>
                         </div>
                     </form>
                 
@@ -122,11 +122,6 @@ const Home = (props) => {
                             <li className="feedPosts">
                                 <div className="homeFeedPost">
                                     <p>{postData}</p>
-                                </div>
-                                <div className="commentContainer">
-                                    <label htmlFor="comment">Comment</label>
-                                    <input className="comment" type="text"></input>
-                                    <input className="submitButtonComment" type="submit"></input>
                                 </div>
                             </li>
 
