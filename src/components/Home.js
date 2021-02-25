@@ -44,6 +44,7 @@ const Home = (props) => {
 
     const handleAddComment = (e) => {
         e.preventDefault()
+        console.log(e.target.value)
         let newComment = { author, content }
 
         axios.post(`${REACT_APP_SERVER_URL}/post/:id`, newComment)
@@ -67,7 +68,7 @@ const Home = (props) => {
     let postData = allPosts.map((post, i) => {
         return (
             <p key={i}>{post.username} {post.content}
-                <form>
+                <form value={post.id}>
                     <input type="text" placeholder="leave a comment"></input>
                     <input type="submit" onClick={handleAddComment}></input>
                 </form>

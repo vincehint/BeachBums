@@ -40,7 +40,10 @@ const Profile = (props) => {
     let profileData = props.user.posts
 
     let profileFeed = profileData.map((post, i) => {
-        return (<p key={i}>{props.user.username} {post.createdAt} {post.content}</p>)
+        return (<p key={i}>{props.user.username} {post.createdAt} {post.content}
+        <button>Delete Post</button>
+        </p>
+        )
     })
 
     return (
