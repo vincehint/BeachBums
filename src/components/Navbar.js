@@ -25,17 +25,17 @@ const Navbar = (props) => {
                                 <span onClick={props.handleLogout} className="nav-link logout-link">Logout</span>
                             </li>
                         </ul>
-                    </div>
-                </div>
-                : 
-                <div className="container">
+                     </div>
+                 </div>
+                 : 
+                 <div className="container">
                     <Link fontFamily='tiki_tropicregular' className="navbar-brand" to="/">Beach Bums</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="#navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
-                    </button>
+                     </button>
                     <div className="collapse navbar-collapse" id="navbarsExample07">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
+                           <li className="nav-item">
                                 <NavLink className="nav-link" exact to="/">Home</NavLink>
                             </li>
                         </ul>
@@ -44,13 +44,15 @@ const Navbar = (props) => {
                                 <NavLink className="nav-link"  to="/signup">Create Account</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link"  to="/login">Login</NavLink>
+                               <NavLink className="nav-link"  to="/login">Login</NavLink>
                             </li>
                         </ul>
                     </div>
+                    
                 </div>
-            }
-        </nav>
+           }
+            
+    </nav>
     );
 }
 export default Navbar;

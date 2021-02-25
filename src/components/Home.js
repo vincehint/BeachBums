@@ -57,11 +57,14 @@ const Home = (props) => {
                 <div className="followColumn">
                     <h3>Follow Suggestions</h3>
                     <ul>
-                        <li>I Follow This Person</li>
+                        
                         <li>I Follow This Person</li>
                         {/* {allUsers.forEach(user =>{
                             return (
-                                <li key={uniqueID()}>{user.username} <button value='Follow'></button></li>
+                                <li key={uniqueID()}>
+                                    {user.photo}
+                                    {user.username} 
+                                    <button value='Follow'></button></li>
                            )
                         })} */}
                             
@@ -93,20 +96,7 @@ const Home = (props) => {
         </div>  
     )
 }
+
 export default Home;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
