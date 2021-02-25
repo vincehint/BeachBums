@@ -51,7 +51,7 @@ const Profile = (props) => {
                 {/* { props.user ? userData : errorDiv() } */}
                 <div className="crudButtonsProfile">
                     <Link className="editButtonUser" to='/profile/edit/'>Edit Profile</Link>
-                    <Link className="deleteButtonUser" onClick={handleAccountDelete}>Delete User</Link>
+                    <button className="deleteButtonUser" onClick={handleAccountDelete}>Delete User</button>
                 </div>
             </div>  
             <div className="myPostContainer">
@@ -60,7 +60,7 @@ const Profile = (props) => {
                         <li className="myPosts">
                             <div className="post">
                                 <h2>Author Name </h2>
-                                <p>{props.user.posts}Some Content Here</p>
+                                {/* <p>{props.user.posts}Some Content Here</p> */}
                             </div>
                             <div className="commentContainer">
                                 <label htmlFor="comment">Comment</label>
