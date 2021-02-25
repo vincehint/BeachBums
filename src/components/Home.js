@@ -12,6 +12,7 @@ const Home = (props) => {
     // let [like, setLike] = useState('')
     let [following, setFollowing] = useState(props.user.following)
     let [userPosts, setUserPosts] = useState([props.user.posts])
+
     let [allUsers, setAllUsers] = useState([])
     let [allPosts, setAllPosts] = useState([])
 
@@ -23,6 +24,8 @@ const Home = (props) => {
             .catch(error => console.log(error));
     }, [])
 
+
+    
     const handleContent = (e) => {
         setContent(e.target.value)
     }
@@ -51,6 +54,7 @@ const Home = (props) => {
                 setComment(newComment)
             })
             .catch(error => console.log(error))
+
     }
 
     // let profileData = props.user.posts
@@ -96,7 +100,7 @@ const Home = (props) => {
                 <div className="followColumn">
                     <h3>Follow Suggestions</h3>
                     <ul>
-                        <li>I Follow This Person</li>
+                        
                         <li>I Follow This Person</li>
                     </ul>
                 </div>
@@ -124,4 +128,7 @@ const Home = (props) => {
         </div>
     )
 }
+
 export default Home;
+
+

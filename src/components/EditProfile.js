@@ -9,7 +9,7 @@ const EditProfile = (props) => {
             id: props.user.id,
             username: props.user.username,
             email: props.user.email,
-            password: props.user.password,
+            password: '',
             birthdate: props.user.birthdate,
             about: props.user.about,
             location: props.user.location,
@@ -63,12 +63,12 @@ const EditProfile = (props) => {
                                     <input type="email" name="email" value={values.email} onChange={handleChange('email')} className="formControl"/>
                                 </div>
                             </div>
-                            <div className="signUpForm">
+                            {/* <div className="signUpForm">
                                 <label htmlFor="password">Password</label>
                                 <div>
                                     <input type="text" name="password" value={values.password} onChange={handleChange('password')} className="formControl"/>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="birthDate">
                                 <label htmlFor="birthdate">Birth Date</label>
                                 <div>
@@ -91,6 +91,12 @@ const EditProfile = (props) => {
                                 <label htmlFor="photo">Upload a Photo of Yourself</label>
                                 <div>
                                     <input id="photo" name="photo" type="file" value={values.selectedPhoto} onChange={handleChange('photo')} className="formControl"/>
+                                </div>
+                            </div>
+                            <div>
+                                <label htmlFor="password">Before submit, please add your password</label>
+                                <div>
+                                    <input type="text" id="password" name="password" value={values.password} onChange={handleChange('password')} className="formControl" required/>
                                 </div>
                             </div>
                             <button type="submit" className="submitButtonSignUp">Submit</button>
