@@ -11,13 +11,14 @@ const Home = (props) => {
     let [following, setFollowing] = useState(props.user.following)
     let [userPosts, setUserPosts] = useState([props.user.posts])
     
-    useEffect(()=>{
-    axios.get(`${REACT_APP_SERVER_URL}/post/author/${author}`)
-    .then(response => {
-        setUserPosts(response)
-    })
-    .catch(error => console.log(error)); 
-    },[])
+    
+    // useEffect(()=>{
+    // axios.get(`${REACT_APP_SERVER_URL}/post/new/${author}`)
+    // .then(response => {
+    //     setUserPosts(response)
+    // })
+    // .catch(error => console.log(error)); 
+    // },[])
     
     const handleContent = (e) => {
         setContent(e.target.value)
@@ -26,13 +27,13 @@ const Home = (props) => {
         e.preventDefault()
         let newPost = {content, author, photo}
  
-        axios.post(`${REACT_APP_SERVER_URL}/post/new`, newPost)
-        .then(() => {
-            axios.get(`${REACT_APP_SERVER_URL}/post/author/${author}`)
-            .then(posts =>{
-                setUserPosts([...userPosts,posts])
-            })
-            .catch(error => console.log(error)); 
+        axios.post(`${REACT_APP_SERVER_URL}/post/new/${author}`, newPost)
+        .then(post => {
+            // axios.get(`${REACT_APP_SERVER_URL}/post/post`)
+            // .then(posts =>{
+                setUserPosts([...userPosts,post])
+            // })
+            // .catch(error => console.log(error)); 
         })
         .catch(error => console.log(error)); 
     }

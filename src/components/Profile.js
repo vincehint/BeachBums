@@ -64,7 +64,7 @@ const Profile = (props) => {
                         <li className="myPosts">
                             <div className="post">
                                 <h2>Author Name </h2>
-                                <p>{props.user.posts}Some Content Here</p>
+                                {/* <p>{props.user.posts}Some Content Here</p> */}
                             </div>
                             <div className="commentContainer">
                                 <label htmlFor="comment">Comment</label>
