@@ -71,7 +71,9 @@ const Home = (props) => {
     let postData = allPosts.map((post, i) => {
         return (
             <div className="homeFeedContainer">
-                <p key={i}>{post.username} {post.content}</p>
+                <div className="postContainer">
+                    <p className= "post" key={i}>{post.username} {post.content}</p>
+                </div>    
                     <form>
                         <div>
                             <input type="text" placeholder="leave a comment"></input>
@@ -119,7 +121,7 @@ const Home = (props) => {
 
                             <li className="feedPosts">
                                 <div className="homeFeedPost">
-                                    <h3>{postData}</h3>
+                                    <p>{postData}</p>
                                 </div>
                                 <div className="commentContainer">
                                     <label htmlFor="comment">Comment</label>

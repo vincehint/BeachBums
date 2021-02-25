@@ -299,6 +299,17 @@ ul.feedList {
   border-radius: 7px;
 }
 
+p.post{
+  background-color: #adf7e1;
+  border: #2db8a5 2px solid;
+  border-radius: 7px;
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 /* Profile Page Styling */
 
 Link {
@@ -391,7 +402,17 @@ ul.feedListProfile {
 li {
   list-style-type: none;
 }
-
+input.submitButtonComment {
+  background-color: #84c8b1;
+  width: 81px;
+  height: 32.5px;
+  border-radius: 5px;
+  border:2px solid #adf7e1;
+  margin: 10px;
+  margin-bottom: -1px;
+  padding: 1px;
+  color: #82775a;
+}
 .myPosts {
   background-color:#ead9be ;
   margin: 15px;
