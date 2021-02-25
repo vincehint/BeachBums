@@ -79,12 +79,7 @@ const Signup = (props) => {
                     <div className="signUpBody">
                         <h2 className="signUpPara">Signup</h2>
                         <form onSubmit={handleSubmit}>
-                            <div className="signUpForm">
-                                <label htmlFor="name">Name</label>
-                                <div>
-                                    <input type="name" name="name" value={username} onChange={handleUsername} className="formControl"></input>
-                                </div>
-                            </div>
+                            
                             <div className="signUpForm">
                                 <label htmlFor="email">Email</label>
                                 <div>
@@ -103,30 +98,7 @@ const Signup = (props) => {
                                     <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="formControl"/>
                                 </div>
                             </div>
-                            <div className="birthDate">
-                                <label htmlFor="age">Birth Date</label>
-                                <div>
-                                    <input type="date" name="age" value={age} onChange={handleAge} className="formControl"/>
-                                </div>
-                            </div>
-                            <div>
-                                <label htmlFor="location">Location</label>
-                                <div>
-                                    <input type="text" name="location" value={location} onChange={handleLocation} className="formControl"/>
-                                </div>
-                            </div>
-                            <div>
-                                <label htmlFor="aboutMe">Tell Us a Little About Yourself...</label>
-                                <div>
-                                    <input type="text" id="aboutMeBox" name="aboutMe" value={about} onChange={handleAbout} className="formControl"/>
-                                </div>
-                            </div>
-                            <div>
-                                <label htmlFor="photo">Upload a Photo of Yourself</label>
-                                <div>
-                                    <input id="photoUpload" type="file" value={selectedPhoto} onChange={handlePhoto} className="formControl"/>
-                                </div>
-                            </div>
+                            
                             <button type="submit" className="submitButtonSignUp">Submit</button>
                         </form>
                     </div>
