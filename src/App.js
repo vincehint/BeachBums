@@ -14,7 +14,6 @@ import Footer from './components/Footer';
 import './App.css';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = localStorage.getItem('jwtToken');
   return <Route {...rest} render={(props) => {
@@ -39,22 +38,24 @@ function App() {
       setCurrentUser(token);
       setIsAuthenticated(true);
     }
-  }, []);
 
-  useEffect(async ()=>{
-    await axios.get(`${REACT_APP_SERVER_URL}/api/users`)
-    .then(response => {
-        setAllUsers(response)
-    })
-    .catch(error => console.log(error)); 
-  },[])
+  }, []);
 
   const nowCurrentUser = (userData) => {
     console.log('nowCurrentUser is working...');
     setCurrentUser(userData);
     setIsAuthenticated(true);
   };
-
+  
+  useEffect(()=>{
+    axios.get(`${REACT_APP_SERVER_URL}/api/users`)
+    .then(response => {
+      setAllUsers(response.data)
+    })
+    .catch(error => console.log(error)); 
+  },[])
+  
+  
   const handleLogout = () => {
     if (localStorage.getItem('jwtToken')) {
       localStorage.removeItem('jwtToken');
@@ -62,9 +63,11 @@ function App() {
       setIsAuthenticated(false);
     }
   }
-
+  
+  
   console.log('Current User', currentUser);
   console.log('Authenicated', isAuthenticated);
+  console.log(allUsers.data)
 
   return (
     <div>
