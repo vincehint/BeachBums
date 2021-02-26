@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { v4 as uniqueID } from "uuid";
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
+
 const Home = (props) => {
     console.log(props)
     let [content, setContent] = useState('')
@@ -75,21 +76,23 @@ const Home = (props) => {
             .catch(error => console.log(error))
     }
 
-    const addLike = (e) => {
-        if (like < 1) {setLike(like + 1)}
-        else {setLike(null)}
-        
-    }
+    // const addLike = (e) => {
+    //     axios.post(`${REACT_APP_SERVER_URL}/post/like/${user}`)
+    //     .then(like => {
+
+    //     })
+    //     .catch(error => console.log(error))
+    // }
     
     //render all posts from database
     let postData = allPosts.map((post, i) => {
         return (
-            <p key={i}>{post.username}{post.content}
+            <p key={i}> {post.username} {post.content}
                 <form>
                     <input type="text" placeholder="leave a comment"></input>
                     <input type="submit" onClick={handleAddComment}></input>
                 </form>
-                <button onClick={addLike}>❤{like}</button>
+                {/* <button onClick={addLike}>❤{like}</button> */}
             </p>
         )
     })
