@@ -18,9 +18,7 @@ const EditProfile = (props) => {
       const [redirect,setRedirect] = useState(false)
 
     const handleChange = name => event => {
-        const value = name === 'photo'
-          ? event.target.type[0]
-          : event.target.value
+        const value = event.target.value
         setValues({...values, [name]: value })
     }
 
@@ -90,7 +88,7 @@ const EditProfile = (props) => {
                             <div>
                                 <label htmlFor="photo">Upload a Photo of Yourself</label>
                                 <div>
-                                    <input id="photo" name="photo" type="text" value={values.selectedPhoto} onChange={handleChange('photo')} className="formControl"/>
+                                    <input type="text" id="photo" name="photo"  value={values.photo} onChange={handleChange('photo')} className="formControl"/>
                                 </div>
                             </div>
                             <div>
