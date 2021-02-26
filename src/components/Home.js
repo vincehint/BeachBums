@@ -6,15 +6,16 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 const Home = (props) => {
     console.log(props)
     let [content, setContent] = useState('')
-    let [photo, setPhoto] = useState('')
     let [author, setAuthor] = useState(props.user.id)
     let [comment, setComment] = useState('')
+    let [allPosts, setAllPosts] = useState([])
+    let [photo, setPhoto] = useState('')
     // let [like, setLike] = useState('')
     let [following, setFollowing] = useState(props.user.following)
     let [userPosts, setUserPosts] = useState([props.user.posts])
     let [allUsers, setAllUsers] = useState(props.allUsers)
-    let [allPosts, setAllPosts] = useState([])
     let [otherUsers, setOtherUsers] = useState([])
+    let [unfollowing,setUnfollowing] = useState('')
     let current_user = props.user
 
     useEffect(()=>{
@@ -31,8 +32,8 @@ const Home = (props) => {
         }
         const users_other = allUsers.filter(booleanOtherUsers)
         setOtherUsers(users_other)
-    },[])
 
+    },[])
 
     
     const handleFollowing = (e) => {
@@ -42,6 +43,27 @@ const Home = (props) => {
         console.log(e.target.value)
 
         axios.post(`${REACT_APP_SERVER_URL}/api/follow/${e.target.value}/user/${current_user.id}`)
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => console.log(error))
+
+    }
+
+    const handleUnFollowing = (e) => {
+        e.preventDefault()
+        console.log('entrou front-end unfollowin')
+        console.log(following)
+        const booleanUnfollow = (user) => {
+            return user !== e.target.value
+        }
+        const updateUnfollowing = following.filter(booleanUnfollow)
+        setFollowing(updateUnfollowing)
+        console.log(following)
+
+        console.log(e.target.value)
+
+        axios.post(`${REACT_APP_SERVER_URL}/api/unfollow/${e.target.value}/user/${current_user.id}`)
             .then(response => {
                 console.log(response.data)
             })
@@ -74,17 +96,29 @@ const Home = (props) => {
 
         axios.post(`${REACT_APP_SERVER_URL}/post/:id`, newComment)
             .then(newComment => {
-                setComment(newComment)
+                setComment([...comment,newComment])
             })
             .catch(error => console.log(error))
 
     }
 
+
+    // console.log(allPosts)
+    // const postCommentArray = allPosts.map(post =>{
+    //     // console.log(post)
+    //     return {
+    //         id: post._id, author:post.author, cmt:post.comments
+    //     }
+    // })
+    // console.log(postCommentArray)
+   
+      
+
     let postData = allPosts.map((post, i) => {
         return (
             <div className="homeFeedContainer">
                 <div className="postContainer">
-                    <p className= "post" key={i}>{post.username} {post.content}</p>
+                    <p className= "post" key={i}> {post.content}</p>
                 </div>    
                     <form>
                         <div>
@@ -96,9 +130,9 @@ const Home = (props) => {
                     </form>
                 
             </div>
-                
         )
     })
+    
 
 
     return (
@@ -126,7 +160,9 @@ const Home = (props) => {
 
                             <li className="feedPosts">
                                 <div className="homeFeedPost">
-                                    <p>{postData}</p>
+                                   
+                                        {postData}
+                                        
                                 </div>
                             </li>
 
@@ -143,7 +179,9 @@ const Home = (props) => {
                             return (
                                 <li key={index}>
                                     {user.username}
-                                    <button value={user._id} onClick={handleFollowing}>Follow</button>
+                                    <span>
+                                        {following.includes(user._id) ? <button value={user._id} onClick={handleUnFollowing}>UnFollow</button> : <button value={user._id} onClick={handleFollowing}>Follow</button>}
+                                    </span>
                                 </li>
                             )
                         })}
