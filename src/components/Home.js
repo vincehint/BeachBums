@@ -118,7 +118,9 @@ const Home = (props) => {
         return (
             <div className="homeFeedContainer">
                 <div className="postContainer">
-                    <p className= "post" key={i}> {post.content}</p>
+
+                    <p className= "post" key={i}>{post.author[0].username} - {post.content}</p>
+
                 </div>    
                     <form>
                         <div>
