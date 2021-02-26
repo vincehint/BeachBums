@@ -228,9 +228,10 @@ input.form-control {
   width: 100%;
 }
 
-.postColumn {
+div.postColumn {
   background-color: #ccc5ac;
-  width: 70%;
+  width: 95%;
+  height: 400px;
   flex: 2;
   margin: 10px;
   border:4px solid #82775a;
@@ -248,7 +249,7 @@ input.form-control {
 }
 .feedColumn {
   background-color:#ccc5ac;
-  width: 64%;
+  width: 95%;
   flex:2;
   margin: 10px;
   border:4px solid #82775a;
@@ -283,13 +284,61 @@ ul.feedList {
 .statusBox {
   width: 70%;
 }
-.submitStatus {
+
+.homeFeedContainer {
+  margin: auto;
+  margin-top: 10px;
+  width: 70%;
   background-color: #2db8a5;
-  border-radius: 5px;
-  border-color: #6faf95;
-  margin: 10px;
+  border:#bbad95 2px solid;
+  border-radius: 7px;
 }
 
+p.post{
+  background-color: #adf7e1;
+  border: #2db8a5 2px solid;
+  border-radius: 7px;
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+input.postBox {
+  width: 70%;
+
+}
+input.commentBox {
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: left;
+}
+input.submitStatus {
+  background-color: #84c8b1;
+  width: 81px;
+  height: 32.5px;
+  border-radius: 5px;
+  border:2px solid #adf7e1; 
+  margin: 10px;
+  margin-bottom: 10px;
+  padding: 1px;
+  color: #82775a;
+}
+input.submitComment {
+  background-color: #84c8b1;
+  width: 81px;
+  height: 32.5px;
+  border-radius: 5px;
+  border:2px solid #adf7e1; 
+  margin: 10px;
+  margin-bottom: 10px;
+  padding: 1px;
+  color: #82775a;
+}
 /* Profile Page Styling */
 
 Link {
@@ -311,7 +360,7 @@ Link {
   color: #82775a;
 }
 
-.profilePicture {
+.profilePhoto {
   width: 75px;
   height: 100px;
   border-radius: 5px;
@@ -335,11 +384,11 @@ Link {
 }
 
 .profileContainer {
-  color: #5e5641;
+  color: #2db8a5;
   font-family: 'Dancing Script', cursive;
   text-align: center;
   background-color:#ccc5ac;
-  border: 3px solid #82775a;
+  border: 3px solid #a7e6cd;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -350,13 +399,39 @@ Link {
   text-transform: capitalize;
   text-shadow: 1px 1px 0px rgba(101, 101, 101, 0.5), -1px -1px 0px rgb(62, 61, 61), 2px 4px 2px rgb(168, 153, 143);
 }
-
-
+div.profileInfo {
+  color: #82775a;
+}
+.postsHeader {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  color: #72aa97;
+  -webkit-text-stroke: 1px #1e7c70;
+  font-size: x-large;
+}
+.profileFeed {
+  margin: auto;
+  width: 70%;
+  color: #265651;
+  background-color: #2db8a5;
+  border: 3px solid #a7e6cd ;
+  text-align: center;
+  border-radius: 7px;
+}
+div.myProfile {
+  background-color: #aba48a;
+  margin: auto;
+  padding: 25px;
+  width: 80%;
+  height: 80%;
+  border-radius: 7px;
+  border: 3px solid #a7e6cd;
+}
 .myPostContainer {
   font-family: 'Dancing Script', cursive;
   text-align: center;
   background-color:#ccc5ac;
-  border: 3px solid #82775a;
+  border: 3px solid #a7e6cd;
   padding: 15px;
   border-radius: 8px;
 }
@@ -370,9 +445,9 @@ li {
 }
 
 .myPosts {
-  background-color:#ead9be ;
+  background-color:#aca48a ;
   margin: 15px;
-  border:#bbad95 2px solid;
+  border: 3px solid #a7e6cd;
   border-radius: 5px;
 }
 /* Footer Styling */

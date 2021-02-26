@@ -18,15 +18,10 @@ const EditProfile = (props) => {
       const [redirect,setRedirect] = useState(false)
 
     const handleChange = name => event => {
-        const value = name === 'photo'
-          ? event.target.files[0]
-          : event.target.value
+        const value = event.target.value
         setValues({...values, [name]: value })
     }
 
-    // const photoUrl = values.id
-    // ? `/api/photo/${values.id}?${new Date().getTime()}`
-    // : '/api/users/defaultphoto'
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -63,12 +58,6 @@ const EditProfile = (props) => {
                                     <input type="email" name="email" value={values.email} onChange={handleChange('email')} className="formControl"/>
                                 </div>
                             </div>
-                            {/* <div className="signUpForm">
-                                <label htmlFor="password">Password</label>
-                                <div>
-                                    <input type="text" name="password" value={values.password} onChange={handleChange('password')} className="formControl"/>
-                                </div>
-                            </div> */}
                             <div className="birthDate">
                                 <label htmlFor="birthdate">Birth Date</label>
                                 <div>
@@ -90,7 +79,7 @@ const EditProfile = (props) => {
                             <div>
                                 <label htmlFor="photo">Upload a Photo of Yourself</label>
                                 <div>
-                                    <input id="photo" name="photo" type="file" value={values.selectedPhoto} onChange={handleChange('photo')} className="formControl"/>
+                                    <input type="text" id="photo" name="photo"  value={values.photo} onChange={handleChange('photo')} className="formControl"/>
                                 </div>
                             </div>
                             <div>

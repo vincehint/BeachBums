@@ -23,7 +23,7 @@ const Profile = (props) => {
         <h3>{props.user.about}</h3>
         <p>{props.user.birthdate}</p>
         <p>{props.user.location}</p>
-        <image>{props.user.photo}</image>
+        <p><img src='{props.user.photo}'></img></p>
         <p><strong>Email:</strong> {props.user.email}</p> 
         <p><strong>ID:</strong> {props.user.id}</p> 
     </div>
@@ -41,22 +41,37 @@ const Profile = (props) => {
     let profileData = props.user.posts
 
     let profileFeed = profileData.map((post, i) => {
-        return (<p key={i}>{props.user.username} {post.createdAt} {post.content}</p>)
+        return (<p key={i}>
+            <ul className="profileFeed">
+                <li className='postContainerProfile'>
+                    <div className="postAuthor">
+                        {props.user.username} 
+                        {post.createdAt} 
+                    </div>
+                    <div className="postContent">
+                        {post.content}
+                    </div>
+                </li>
+            </ul>
+            </p>)
     })
 
     return (
         <div className="profilePage">
             <div className="profileContainer" >
-                <div className="profilePicture">
-                    <img src={props.user.photo} alt="Users Profile Photo"/>
+                <div className="myProfile">
+                    <div className="profilePicture">
+                        <img className="profilePhoto" src={props.user.photo} alt="Users Profile Photo"/>
+                    </div>
+                    <h1 id="helloUser">Hello, {props.user.username}</h1>
+                    <div className="profileInfo">
+                        <p>Birthday: {props.user.birthdate}</p>
+                        <p>Located In: {props.user.location}</p>
+                        <p>About Me: {props.user.about}</p>
+                    </div>
+                    {/* { props.user ? userData : errorDiv() } */}
+                    <div className="crudButtonsProfile">
                 </div>
-                <h1 id="helloUser">Hello, {props.user.username}</h1>
-                <p>Birthday: {props.user.birthdate}</p>
-                <p>Located In: {props.user.location}</p>
-                <p>About Me: {props.user.about}</p>
-                {/* { props.user ? userData : errorDiv() } */}
-                <div className="crudButtonsProfile">
-
                     <div className="editProfile">   
                         <Link className="editButtonUser" to='/profile/edit'>Edit Profile</Link>
                     </div> 
@@ -70,8 +85,14 @@ const Profile = (props) => {
                     <div className="postContainer">
                         <li className="myPosts">
                             <div className="post">
-                                <h2>Your Posts</h2>
-                                <ul>{profileFeed}</ul>
+                                <div className="postsHeader">
+                                    <h2>Your Posts</h2>
+                                </div>
+                                <div className="postListContainer">
+                                    <div>
+                                        {profileFeed}
+                                    </div>  
+                                </div>
                             </div>
                             <div className="commentContainer">
                                 <label htmlFor="comment">Comment</label>
