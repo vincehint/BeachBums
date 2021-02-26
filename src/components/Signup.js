@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const Signup = () => {
+const Signup = (props) => {
     let [email, setEmail] = useState('')
     let [password, setPassword] = useState('');
     let [confirmPassword, setConfirmPassword] = useState('');
@@ -55,6 +55,15 @@ const Signup = () => {
             axios.post(`${REACT_APP_SERVER_URL}/api/signup`, newUser)
             .then(response => {
                 console.log(response);
+                const { token } = response.data;
+                // Save token to localStorage
+                localStorage.setItem('jwtToken', token);
+                // Set token to auth header
+                setAuthToken(token);
+                // Decode token to get the user data
+                const decoded = jwt_decode(token);
+                // Set current user
+                props.nowCurrentUser(decoded);
                 setRedirect(true);
             })
             .catch(error => console.log(error));
@@ -70,12 +79,7 @@ const Signup = () => {
                     <div className="signUpBody">
                         <h2 className="signUpPara">Signup</h2>
                         <form onSubmit={handleSubmit}>
-                            <div className="signUpForm">
-                                <label htmlFor="name">Name</label>
-                                <div>
-                                    <input type="name" name="name" value={username} onChange={handleUsername} className="formControl"></input>
-                                </div>
-                            </div>
+                            
                             <div className="signUpForm">
                                 <label htmlFor="email">Email</label>
                                 <div>
@@ -94,30 +98,7 @@ const Signup = () => {
                                     <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="formControl"/>
                                 </div>
                             </div>
-                            <div className="birthDate">
-                                <label htmlFor="age">Birth Date</label>
-                                <div>
-                                    <input type="date" name="age" value={age} onChange={handleAge} className="formControl"/>
-                                </div>
-                            </div>
-                            <div>
-                                <label htmlFor="location">Location</label>
-                                <div>
-                                    <input type="text" name="location" value={location} onChange={handleLocation} className="formControl"/>
-                                </div>
-                            </div>
-                            <div>
-                                <label htmlFor="aboutMe">Tell Us a Little About Yourself...</label>
-                                <div>
-                                    <input type="text" id="aboutMeBox" name="aboutMe" value={about} onChange={handleAbout} className="formControl"/>
-                                </div>
-                            </div>
-                            <div>
-                                <label htmlFor="photo">Upload a Photo of Yourself</label>
-                                <div>
-                                    <input id="photoUpload" type="file" value={selectedPhoto} onChange={handlePhoto} className="formControl"/>
-                                </div>
-                            </div>
+                            
                             <button type="submit" className="submitButtonSignUp">Submit</button>
                         </form>
                     </div>

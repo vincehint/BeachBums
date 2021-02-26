@@ -7,7 +7,7 @@ html {
 body {
   font-family: 'tiki_tropicregular';
   margin-bottom: 60px; /* Margin bottom by footer height */
-  background-image: url('https://images.unsplash.com/photo-1594494842991-a0e13dd4a4ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+  background-image: url('./assets/background.jpeg');
   background-color: #d5d1bd;
   background-repeat: no-repeat;
   background-size: cover;	
@@ -215,9 +215,9 @@ input.form-control {
   font-family: 'Dancing Script', cursive;
   margin: 15px;
   padding: 8px;
-  background-color: #6faf95;
-  outline-color: #2db8a5;
-  border-width: 4px solid;
+  background-color: #1d9583;
+  
+  border: #b2e9d1 4px solid;
   border-radius: 7px;
   text-align: center;
 }
@@ -281,15 +281,63 @@ ul.feedList {
 }
 
 .statusBox {
-  width: 400px;
-}
-.submitStatus {
-  background-color: #2db8a5;
-  border-radius: 5px;
-  border-color: #6faf95;
-  margin: 10px;
+  width: 70%;
 }
 
+.homeFeedContainer {
+  margin: auto;
+  margin-top: 10px;
+  width: 70%;
+  background-color: #2db8a5;
+  border:#bbad95 2px solid;
+  border-radius: 7px;
+}
+
+p.post{
+  background-color: #adf7e1;
+  border: #2db8a5 2px solid;
+  border-radius: 7px;
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+input.postBox {
+  width: 70%;
+
+}
+input.commentBox {
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: left;
+}
+input.submitStatus {
+  background-color: #84c8b1;
+  width: 81px;
+  height: 32.5px;
+  border-radius: 5px;
+  border:2px solid #adf7e1; 
+  margin: 10px;
+  margin-bottom: 10px;
+  padding: 1px;
+  color: #82775a;
+}
+input.submitComment {
+  background-color: #84c8b1;
+  width: 81px;
+  height: 32.5px;
+  border-radius: 5px;
+  border:2px solid #adf7e1; 
+  margin: 10px;
+  margin-bottom: 10px;
+  padding: 1px;
+  color: #82775a;
+}
 /* Profile Page Styling */
 
 Link {
@@ -311,23 +359,35 @@ Link {
   color: #82775a;
 }
 
+.profilePicture {
+  width: 75px;
+  height: 100px;
+  border-radius: 5px;
+  border: 2px solid #adf7e1;
+  align-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .deleteButtonUser {
   background-color: #84c8b1;
-  width: 85px;
-  height: 50px;
+  width: 81px;
+  height: 32.5px;
   border-radius: 5px;
   border:2px solid #adf7e1;
   margin: 10px;
-  padding: 5px;
+  margin-bottom: -1px;
+  padding: 1px;
   color: #82775a;
 }
 
 .profileContainer {
-  color: #5e5641;
+  color: #2db8a5;
   font-family: 'Dancing Script', cursive;
   text-align: center;
   background-color:#ccc5ac;
-  border: 3px solid #82775a;
+  border: 3px solid #a7e6cd;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -338,13 +398,39 @@ Link {
   text-transform: capitalize;
   text-shadow: 1px 1px 0px rgba(101, 101, 101, 0.5), -1px -1px 0px rgb(62, 61, 61), 2px 4px 2px rgb(168, 153, 143);
 }
-
-
+div.profileInfo {
+  color: #82775a;
+}
+.postsHeader {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  color: #72aa97;
+  -webkit-text-stroke: 1px #1e7c70;
+  font-size: x-large;
+}
+.profileFeed {
+  margin: auto;
+  width: 70%;
+  color: #265651;
+  background-color: #2db8a5;
+  border: 3px solid #a7e6cd ;
+  text-align: center;
+  border-radius: 7px;
+}
+div.myProfile {
+  background-color: #aba48a;
+  margin: auto;
+  padding: 25px;
+  width: 80%;
+  height: 80%;
+  border-radius: 7px;
+  border: 3px solid #a7e6cd;
+}
 .myPostContainer {
   font-family: 'Dancing Script', cursive;
   text-align: center;
   background-color:#ccc5ac;
-  border: 3px solid #82775a;
+  border: 3px solid #a7e6cd;
   padding: 15px;
   border-radius: 8px;
 }
@@ -358,9 +444,9 @@ li {
 }
 
 .myPosts {
-  background-color:#ead9be ;
+  background-color:#aca48a ;
   margin: 15px;
-  border:#bbad95 2px solid;
+  border: 3px solid #a7e6cd;
   border-radius: 5px;
 }
 /* Footer Styling */
