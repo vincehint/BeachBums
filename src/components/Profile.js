@@ -23,7 +23,7 @@ const Profile = (props) => {
         <h3>{props.user.about}</h3>
         <p>{props.user.birthdate}</p>
         <p>{props.user.location}</p>
-        <image>{props.user.photo}</image>
+        <p><img src='{props.user.photo}'></img></p>
         <p><strong>Email:</strong> {props.user.email}</p> 
         <p><strong>ID:</strong> {props.user.id}</p> 
     </div>
