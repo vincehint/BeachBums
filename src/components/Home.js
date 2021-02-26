@@ -15,7 +15,7 @@ const Home = (props) => {
     let [userPosts, setUserPosts] = useState([props.user.posts])
     let [allUsers, setAllUsers] = useState(props.allUsers)
     let [otherUsers, setOtherUsers] = useState([])
-    let [unfollowing,setUnfollowing] = useState('')
+    // let [unfollowing,setUnfollowing] = useState('')
     let current_user = props.user
 
     useEffect(()=>{
@@ -91,10 +91,9 @@ const Home = (props) => {
     }
 
     const handleAddComment = (e) => {
-        e.preventDefault()
         let newComment = { author, content }
 
-        axios.post(`${REACT_APP_SERVER_URL}/post/:id`, newComment)
+        axios.post(`${REACT_APP_SERVER_URL}/post/${e}`, newComment)
             .then(newComment => {
                 setComment([...comment,newComment])
             })
@@ -119,13 +118,18 @@ const Home = (props) => {
             <div className="homeFeedContainer">
                 <div className="postContainer">
                     <p className= "post" key={i}> {post.content}</p>
+                    <ul>
+                        {post.comments.map(comment =>{
+                            return <li>{comment.content}</li>
+                        })}
+                    </ul>
                 </div>    
                     <form>
                         <div>
                             <input className="commentBox" type="text" placeholder="leave a comment"></input>
                         </div>
                         <div>
-                            <input className="submitComment" type="submit" onClick={handleAddComment}></input>
+                            <input className="submitComment" type="submit" onClick={()=> handleAddComment(post._id)}></input>
                         </div>
                     </form>
                 
