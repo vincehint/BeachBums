@@ -6,15 +6,16 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 const Home = (props) => {
     console.log(props)
     let [content, setContent] = useState('')
-    let [photo, setPhoto] = useState('')
     let [author, setAuthor] = useState(props.user.id)
     let [comment, setComment] = useState('')
+    let [allPosts, setAllPosts] = useState([])
+    let [photo, setPhoto] = useState('')
     let [like, setLike] = useState(null)
     let [following, setFollowing] = useState(props.user.following)
     let [userPosts, setUserPosts] = useState([props.user.posts])
     let [allUsers, setAllUsers] = useState(props.allUsers)
-    let [allPosts, setAllPosts] = useState([])
     let [otherUsers, setOtherUsers] = useState([])
+    let [unfollowing,setUnfollowing] = useState('')
     let current_user = props.user
 
     useEffect(()=>{
@@ -31,8 +32,8 @@ const Home = (props) => {
         }
         const users_other = allUsers.filter(booleanOtherUsers)
         setOtherUsers(users_other)
-    },[])
 
+    },[])
 
     
     const handleFollowing = (e) => {
@@ -42,6 +43,27 @@ const Home = (props) => {
         console.log(e.target.value)
 
         axios.post(`${REACT_APP_SERVER_URL}/api/follow/${e.target.value}/user/${current_user.id}`)
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => console.log(error))
+
+    }
+
+    const handleUnFollowing = (e) => {
+        e.preventDefault()
+        console.log('entrou front-end unfollowin')
+        console.log(following)
+        const booleanUnfollow = (user) => {
+            return user !== e.target.value
+        }
+        const updateUnfollowing = following.filter(booleanUnfollow)
+        setFollowing(updateUnfollowing)
+        console.log(following)
+
+        console.log(e.target.value)
+
+        axios.post(`${REACT_APP_SERVER_URL}/api/unfollow/${e.target.value}/user/${current_user.id}`)
             .then(response => {
                 console.log(response.data)
             })
@@ -71,31 +93,54 @@ const Home = (props) => {
         let newComment = { author, content }
         axios.post(`${REACT_APP_SERVER_URL}/post/:id`, newComment)
             .then(newComment => {
-                setComment(newComment)
+                setComment([...comment,newComment])
             })
             .catch(error => console.log(error))
     }
 
-    // const addLike = (e) => {
-    //     axios.post(`${REACT_APP_SERVER_URL}/post/like/${user}`)
-    //     .then(like => {
+    // console.log(allPosts)
+    // const postCommentArray = allPosts.map(post =>{
+    //     // console.log(post)
+    //     return {
+    //         id: post._id, author:post.author, cmt:post.comments
+    //     }
+    // })
+    // console.log(postCommentArray)
+   
+    const addLike = (e) => {
+        // console.log(e.target.value)
+        // setLike([...like, e.target.value])
+        axios.post(`${REACT_APP_SERVER_URL}/post/like/${e.target.value}`, {author: author})
+        .then(like => {
+            console.log(like)
 
-    //     })
-    //     .catch(error => console.log(error))
-    // }
-    
-    //render all posts from database
+        })
+        .catch(error => console.log(error))
+    }
+
+
     let postData = allPosts.map((post, i) => {
         return (
-            <p key={i}> {post.username} {post.content}
-                <form>
-                    <input type="text" placeholder="leave a comment"></input>
-                    <input type="submit" onClick={handleAddComment}></input>
-                </form>
-                {/* <button onClick={addLike}>❤{like}</button> */}
-            </p>
+            <div className="homeFeedContainer">
+                <div className="postContainer">
+                    <p className= "post" key={i}> {post.username} {post.content}</p>
+                        <button value={post._id} onClick={addLike}>❤{post.likes.length}</button>
+                </div>    
+                    <form>
+                        <div>
+                            <input className="commentBox" type="text" placeholder="leave a comment"></input>
+                        </div>
+                        <div>
+                            <input className="submitComment" type="submit" onClick={handleAddComment}></input>
+                        </div>
+                    </form>
+                
+            </div>
         )
     })
+    
+
+
     return (
         <div className="home-wrapper">
             <div className='homeRow'>
@@ -119,12 +164,7 @@ const Home = (props) => {
                         <ul className="feedList">
                             <li className="feedPosts">
                                 <div className="homeFeedPost">
-                                    <h3>{postData}</h3>
-                                </div>
-                                <div className="commentContainer">
-                                    <label htmlFor="comment">Comment</label>
-                                    <input className="comment" type="text"></input>
-                                    <input className="submitButtonComment" type="submit"></input>
+                                    {postData}
                                 </div>
                             </li>
                         </ul>
@@ -140,7 +180,9 @@ const Home = (props) => {
                             return (
                                 <li key={index}>
                                     {user.username}
-                                    <button value={user._id} onClick={handleFollowing}>Follow</button>
+                                    <span>
+                                        {following.includes(user._id) ? <button value={user._id} onClick={handleUnFollowing}>UnFollow</button> : <button value={user._id} onClick={handleFollowing}>Follow</button>}
+                                    </span>
                                 </li>
                             )
                         })}
