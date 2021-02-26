@@ -6,6 +6,16 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 const Profile = (props) => {
     console.log(props);
     const [redirect,setRedirect] = useState(false)
+    const [values, setValues] = useState({
+        id: props.user.id,
+        // username: props.user.username,
+        // email: props.user.email,
+        password: '',
+        // birthdate: props.user.birthdate,
+        // about: props.user.about,
+        // location: props.user.location,
+        // photo: props.user.photo
+  })
 
     let handleAccountDelete = () =>{
         axios.delete(`${REACT_APP_SERVER_URL}/api/${props.user.id}`)
@@ -14,6 +24,24 @@ const Profile = (props) => {
         })
         .catch(error => console.log(error));     
     }
+
+    const handleChange = name => event => {
+        const value = event.target.value
+        setValues({...values, [name]: value })
+    }
+
+    const changePassWord = (e) => {
+        e.preventDefault();
+        const passwordUpdated = values
+
+        axios.post(`${REACT_APP_SERVER_URL}/api/password/edit/`, passwordUpdated)
+        .then(response => {
+            console.log(response);
+                setRedirect(true);
+            })
+            .catch(error => console.log(error));    
+    }
+    
 
     if (!props.user) return <Redirect to="/login" />
 
@@ -78,6 +106,15 @@ const Profile = (props) => {
                     <div className="deleteProfile">
                         <button className="deleteButtonUser" onClick={handleAccountDelete}>Delete User</button>
                     </div>
+
+                    <div>
+                        <input type="text" id="password" name="password" value={values.password} onChange={handleChange('password')} className="formControl" required/>
+                    </div>
+
+                    <div>
+                        <button onClick={changePassWord}>Change Password</button>
+                    </div>
+
                 </div>
             </div>  
             <div className="myPostContainer">
