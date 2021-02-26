@@ -22,9 +22,6 @@ const EditProfile = (props) => {
         setValues({...values, [name]: value })
     }
 
-    // const photoUrl = values.id
-    // ? `/api/photo/${values.id}?${new Date().getTime()}`
-    // : '/api/users/defaultphoto'
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -61,12 +58,6 @@ const EditProfile = (props) => {
                                     <input type="email" name="email" value={values.email} onChange={handleChange('email')} className="formControl"/>
                                 </div>
                             </div>
-                            {/* <div className="signUpForm">
-                                <label htmlFor="password">Password</label>
-                                <div>
-                                    <input type="text" name="password" value={values.password} onChange={handleChange('password')} className="formControl"/>
-                                </div>
-                            </div> */}
                             <div className="birthDate">
                                 <label htmlFor="birthdate">Birth Date</label>
                                 <div>
