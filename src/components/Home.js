@@ -10,7 +10,7 @@ const Home = (props) => {
     let [comment, setComment] = useState('')
     let [allPosts, setAllPosts] = useState([])
     let [photo, setPhoto] = useState('')
-    // let [like, setLike] = useState('')
+    let [like, setLike] = useState(null)
     let [following, setFollowing] = useState(props.user.following)
     let [userPosts, setUserPosts] = useState([props.user.posts])
     let [allUsers, setAllUsers] = useState(props.allUsers)
@@ -78,7 +78,6 @@ const Home = (props) => {
     const handleAddPost = (e) => {
         e.preventDefault()
         let newPost = { content, author, photo }
-
         axios.post(`${REACT_APP_SERVER_URL}/post/new/${author}`, newPost)
             .then(() => {
                 axios.get(`${REACT_APP_SERVER_URL}/post/author/${author}`)
@@ -89,19 +88,15 @@ const Home = (props) => {
             })
             .catch(error => console.log(error));
     }
-
     const handleAddComment = (e) => {
         e.preventDefault()
         let newComment = { author, content }
-
         axios.post(`${REACT_APP_SERVER_URL}/post/:id`, newComment)
             .then(newComment => {
                 setComment([...comment,newComment])
             })
             .catch(error => console.log(error))
-
     }
-
 
     // console.log(allPosts)
     // const postCommentArray = allPosts.map(post =>{
@@ -112,15 +107,24 @@ const Home = (props) => {
     // })
     // console.log(postCommentArray)
    
-      
+    const addLike = (e) => {
+        // console.log(e.target.value)
+        // setLike([...like, e.target.value])
+        axios.post(`${REACT_APP_SERVER_URL}/post/like/${e.target.value}`, {author: author})
+        .then(like => {
+            console.log(like)
+
+        })
+        .catch(error => console.log(error))
+    }
+
 
     let postData = allPosts.map((post, i) => {
         return (
             <div className="homeFeedContainer">
                 <div className="postContainer">
-
-                    <p className= "post" key={i}>{post.author[0].username} - {post.content}</p>
-
+                    <p className= "post" key={i}> {post.username} {post.content}</p>
+                        <button value={post._id} onClick={addLike}>❤{post.likes.length}</button>
                 </div>    
                     <form>
                         <div>
@@ -138,7 +142,6 @@ const Home = (props) => {
 
 
     return (
-
         <div className="home-wrapper">
             <div className='homeRow'>
                 <div className="homeColumn">
@@ -159,15 +162,11 @@ const Home = (props) => {
                 <div className="homeColumn">
                     <div className="feedColumn">
                         <ul className="feedList">
-
                             <li className="feedPosts">
                                 <div className="homeFeedPost">
-                                   
-                                        {postData}
-                                        
+                                    {postData}
                                 </div>
                             </li>
-
                         </ul>
                     </div>
                 </div>
@@ -197,7 +196,4 @@ const Home = (props) => {
         </div>
     )
 }
-
 export default Home;
-
-

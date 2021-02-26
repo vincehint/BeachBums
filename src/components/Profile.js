@@ -66,9 +66,27 @@ const Profile = (props) => {
         );
     };
 
+    let handleDeletePost = (e) => {
+        e.preventDefault()
+
+        axios.delete(`${REACT_APP_SERVER_URL}/post/${props.user.post}`)
+        .then(() => {
+            setRedirect(true)
+        })
+        .catch(error => console.log(error))
+    }
+
+    if (redirect) return <Redirect to="/profile" />
+
     let profileData = props.user.posts
 
     let profileFeed = profileData.map((post, i) => {
+<<<<<<< HEAD
+        return (<p key={i}>{props.user.username} {post.createdAt} {post.content}
+        <button onClick={handleDeletePost}>Delete Post</button>
+        </p>
+        )
+=======
         return (<p key={i}>
             <ul className="profileFeed">
                 <li className='postContainerProfile'>
@@ -87,6 +105,7 @@ const Profile = (props) => {
                 </li>
             </ul>
             </p>)
+>>>>>>> 153c401cba406edbf1d478b02af902e7668c2697
     })
 
     return (
