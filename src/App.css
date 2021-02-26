@@ -246,6 +246,18 @@ div.postColumn {
   margin-left: 0px;
   border:4px solid #82775a;
   border-radius: 5px;
+  color:rgb(143, 108, 92)
+}
+.followSuggestions {
+  background-color: #adf7e1;
+  border: #2db8a5 2px solid;
+  border-radius: 7px;
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: left;
 }
 .feedColumn {
   background-color:#ccc5ac;
@@ -292,6 +304,7 @@ ul.feedList {
   background-color: #2db8a5;
   border:#bbad95 2px solid;
   border-radius: 7px;
+  margin-bottom: 10px;
 }
 
 p.post{
@@ -339,6 +352,35 @@ input.submitComment {
   padding: 1px;
   color: #82775a;
 }
+.followButton {
+  background-color: #84c8b1;
+  width: 81px;
+  height: 32.5px;
+  border-radius: 5px;
+  border:2px solid #adf7e1;
+  margin: 10px;
+  margin-bottom: -1px;
+  margin-right: 5px;
+  padding: 1px;
+  color: #82775a;
+}
+.followerPhoto {
+  width: 50px;
+  border:2px solid #62c1a4;
+  height: 50px;
+  margin: 10px;
+}
+.unfollowButton {
+  background-color: #84c8b1;
+  width: 81px;
+  height: 32.5px;
+  border-radius: 5px;
+  border:2px solid #adf7e1;
+  margin: 10px;
+  margin-bottom: -1px;
+  padding: 1px;
+  color: #82775a;
+}
 /* Profile Page Styling */
 
 Link {
@@ -359,7 +401,30 @@ Link {
   padding: 5px;
   color: #82775a;
 }
-
+.changePasswordButton {
+  background-color: #84c8b1;
+  width: 20%;
+  height: 32.5px;
+  border-radius: 5px;
+  border:2px solid #adf7e1; 
+  margin: 10px;
+  margin-bottom: 10px;
+  padding: 1px;
+  color: #82775a;
+}
+.comment {
+  background-color: #adf7e1;
+  margin: 5px;
+ 
+}
+.commentContainer {
+  background-color: #84c8b1;
+  border-radius: 5px;
+  border:2px solid #adf7e1;
+  margin: auto;
+  text-align: center;
+  width: 80%;
+}
 .profilePhoto {
   width: 75px;
   height: 100px;
