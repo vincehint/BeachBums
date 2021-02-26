@@ -8,7 +8,7 @@ const Home = (props) => {
     let [photo, setPhoto] = useState('')
     let [author, setAuthor] = useState(props.user.id)
     let [comment, setComment] = useState('')
-    // let [like, setLike] = useState('')
+    let [like, setLike] = useState(null)
     let [following, setFollowing] = useState(props.user.following)
     let [userPosts, setUserPosts] = useState([props.user.posts])
     let [allUsers, setAllUsers] = useState(props.allUsers)
@@ -64,14 +64,22 @@ const Home = (props) => {
             })
             .catch(error => console.log(error))
     }
+
+    const addLike = (e) => {
+        if (like < 1) {setLike(like + 1)}
+        else {setLike(null)}
+        
+    }
     
+    //render all posts from database
     let postData = allPosts.map((post, i) => {
         return (
-            <p key={i}>{post.username} {post.content}
+            <p key={i}>{post.username}{post.content}
                 <form>
                     <input type="text" placeholder="leave a comment"></input>
                     <input type="submit" onClick={handleAddComment}></input>
                 </form>
+                <button onClick={addLike}>❤{like}</button>
             </p>
         )
     })
