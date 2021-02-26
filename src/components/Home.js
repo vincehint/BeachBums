@@ -14,6 +14,7 @@ const Home = (props) => {
     let [allUsers, setAllUsers] = useState(props.allUsers)
     let [allPosts, setAllPosts] = useState([])
     let current_user = props.user
+    
     useEffect(()=>{
         axios.get(`${REACT_APP_SERVER_URL}/post/hello`)
         .then(response => {
@@ -21,7 +22,8 @@ const Home = (props) => {
         })
         .catch(error => console.log(error)); 
       },[])
-    const booleanOtherUsers = (user) => {
+   
+      const booleanOtherUsers = (user) => {
         return user._id !== props.user.id
     }
     const users_other = allUsers.filter(booleanOtherUsers)
@@ -62,6 +64,7 @@ const Home = (props) => {
             })
             .catch(error => console.log(error))
     }
+    
     let postData = allPosts.map((post, i) => {
         return (
             <p key={i}>{post.username} {post.content}

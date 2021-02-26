@@ -359,7 +359,7 @@ Link {
   color: #82775a;
 }
 
-.profilePicture {
+#photo {
   width: 75px;
   height: 100px;
   border-radius: 5px;
