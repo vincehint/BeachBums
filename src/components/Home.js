@@ -87,18 +87,35 @@ const Home = (props) => {
 
         <div className="home-wrapper">
             <div className='homeRow'>
-                <div className="postColumn">
-                    <form className="postForm">
-                        <div>
-                            <label htmlFor="postStatus" className="statusLabel">How You Doin' Dude?</label>
-                        </div>
-                        <div>
-                            <input className="statusBox" type="text" onChange={handleContent}></input>
-                        </div>
-                        <div>
-                            <input type="submit" className="submitStatus" onClick={handleAddPost}></input>
-                        </div>
-                    </form>
+                <div className="homeColumn">
+                    <div className="postColumn">
+                        <form className="postForm">
+                            <div>
+                                <label htmlFor="postStatus" className="statusLabel">How You Doin' Dude?</label>
+                            </div>
+                            <div>
+                                <input className="statusBox" type="text" onChange={handleContent}></input>
+                            </div>
+                            <div>
+                                <input type="submit" className="submitStatus" onClick={handleAddPost}></input>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="feedRow">
+                <div className="homeColumn">
+                    <div className="feedColumn">
+                        <ul className="feedList">
+
+                            <li className="feedPosts">
+                                <div className="homeFeedPost">
+                                    <p>{postData}</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
                 </div>
                 <div className="followColumn">
                     <h3>Follow Suggestions</h3>
@@ -115,21 +132,7 @@ const Home = (props) => {
                     </ul>
                 </div>
             </div>
-            <div className="feedRow">
-                <div className="homeColumn">
-                    <div className="feedColumn">
-                        <ul className="feedList">
-
-                            <li className="feedPosts">
-                                <div className="homeFeedPost">
-                                    <p>{postData}</p>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     )
 }

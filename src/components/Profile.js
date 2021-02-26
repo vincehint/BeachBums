@@ -61,7 +61,7 @@ const Profile = (props) => {
             <div className="profileContainer" >
                 <div className="myProfile">
                     <div className="profilePicture">
-                        <img src={props.user.photo} alt="Users Profile Photo"/>
+                        <img className="profilePhoto" src={props.user.photo} alt="Users Profile Photo"/>
                     </div>
                     <h1 id="helloUser">Hello, {props.user.username}</h1>
                     <div className="profileInfo">
