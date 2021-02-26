@@ -178,12 +178,15 @@ const Home = (props) => {
                         
                         {otherUsers.map((user,index)=> {
                             return (
-                                <li key={index}>
-                                    {user.username}
-                                    <span>
-                                        {following.includes(user._id) ? <button value={user._id} onClick={handleUnFollowing}>UnFollow</button> : <button value={user._id} onClick={handleFollowing}>Follow</button>}
-                                    </span>
-                                </li>
+                                <div className="followSuggestions">
+                                    <li key={index}>
+                                    <img className="followerPhoto" src={user.photo}/>                                    
+                                        {user.username}
+                                        <span>
+                                            {following.includes(user._id) ? <button className="followButton" value={user._id} onClick={handleUnFollowing}>UnFollow</button> : <button className="unfollowButton" value={user._id} onClick={handleFollowing}>Follow</button>}
+                                        </span>
+                                    </li>
+                                </div>
                             )
                         })}
                     </ul>

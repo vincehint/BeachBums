@@ -81,10 +81,31 @@ const Profile = (props) => {
     let profileData = props.user.posts
 
     let profileFeed = profileData.map((post, i) => {
+<<<<<<< HEAD
         return (<p key={i}>{props.user.username} {post.createdAt} {post.content}
         <button onClick={handleDeletePost}>Delete Post</button>
         </p>
         )
+=======
+        return (<p key={i}>
+            <ul className="profileFeed">
+                <li className='postContainerProfile'>
+                    <div className="postAuthor">
+                        {props.user.username} 
+                        {post.createdAt} 
+                    </div>
+                    <div className="postContent">
+                        {post.content}
+                    </div>
+                    <div className="commentContainer">
+                        <label htmlFor="comment">Comment</label>
+                        <input className="comment" type="text"></input>
+                        <input className="submitButtonComment" type="submit"></input>
+                    </div>
+                </li>
+            </ul>
+            </p>)
+>>>>>>> 153c401cba406edbf1d478b02af902e7668c2697
     })
 
     return (
@@ -115,7 +136,7 @@ const Profile = (props) => {
                     </div>
 
                     <div>
-                        <button onClick={changePassWord}>Change Password</button>
+                        <button className="changePasswordButton" onClick={changePassWord}>Change Password</button>
                     </div>
 
                 </div>
@@ -134,11 +155,7 @@ const Profile = (props) => {
                                     </div>  
                                 </div>
                             </div>
-                            <div className="commentContainer">
-                                <label htmlFor="comment">Comment</label>
-                                <input className="comment" type="text"></input>
-                                <input className="submitButtonComment" type="submit"></input>
-                            </div>
+                            
                         </li>
                     </div>
                 </ul>
