@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { v4 as uniqueID } from "uuid";
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
@@ -12,20 +12,26 @@ const Home = (props) => {
     // let [like, setLike] = useState('')
     let [following, setFollowing] = useState(props.user.following)
     let [userPosts, setUserPosts] = useState([props.user.posts])
-
-    let [allUsers, setAllUsers] = useState([])
+    let [allUsers, setAllUsers] = useState(props.allUsers)
     let [allPosts, setAllPosts] = useState([])
 
-    useEffect(() => {
+    useEffect(()=>{
         axios.get(`${REACT_APP_SERVER_URL}/post/hello`)
-            .then(response => {
-                setAllPosts(response.data)
-            })
-            .catch(error => console.log(error));
-    }, [])
+        .then(response => {
+            setAllPosts(response.data)
+        })
+        .catch(error => console.log(error)); 
+      },[])
+
+    const booleanOtherUsers = (user) => {
+        console.log(user._id)
+        console.log(props.user.id)
+        return user._id !== props.user.id
+    }
+    const users_other = allUsers.filter(booleanOtherUsers)
+    console.log(users_other)
 
 
-    
     const handleContent = (e) => {
         setContent(e.target.value)
     }
@@ -44,7 +50,6 @@ const Home = (props) => {
             .catch(error => console.log(error));
     }
 
-
     const handleAddComment = (e) => {
         e.preventDefault()
         let newComment = { author, content }
@@ -56,17 +61,6 @@ const Home = (props) => {
             .catch(error => console.log(error))
 
     }
-
-    // let profileData = props.user.posts
-
-    // let profileFeed = profileData.map((post, i) => {
-    //     return (<p key={i}>{props.user.username} {post.createdAt} {post.content} 
-    //     <form>
-    //         <input type="text" placeholder="leave a comment"></input>
-    //         <input type="submit" onClick={handleAddComment}></input>
-    //     </form>
-    //     </p>)                
-    // })
 
     let postData = allPosts.map((post, i) => {
         return (
@@ -110,7 +104,14 @@ const Home = (props) => {
                     <h3>Follow Suggestions</h3>
                     <ul>
                         
-                        <li>I Follow This Person</li>
+                        {users_other.map((user,index)=> {
+                            return (
+                                <li key={index}>
+                                    {user.username}
+                                    <button value={user._id}>Follow</button>
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
             </div>
