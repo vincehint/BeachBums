@@ -8,13 +8,7 @@ const Profile = (props) => {
     const [redirect,setRedirect] = useState(false)
     const [values, setValues] = useState({
         id: props.user.id,
-        // username: props.user.username,
-        // email: props.user.email,
-        password: '',
-        // birthdate: props.user.birthdate,
-        // about: props.user.about,
-        // location: props.user.location,
-        // photo: props.user.photo
+        password: ''
   })
 
     let handleAccountDelete = () =>{
@@ -81,12 +75,6 @@ const Profile = (props) => {
     let profileData = props.user.posts
 
     let profileFeed = profileData.map((post, i) => {
-<<<<<<< HEAD
-        return (<p key={i}>{props.user.username} {post.createdAt} {post.content}
-        <button onClick={handleDeletePost}>Delete Post</button>
-        </p>
-        )
-=======
         return (<p key={i}>
             <ul className="profileFeed">
                 <li className='postContainerProfile'>
@@ -96,6 +84,7 @@ const Profile = (props) => {
                     </div>
                     <div className="postContent">
                         {post.content}
+                        <button onClick={handleDeletePost}>Delete Post</button>
                     </div>
                     <div className="commentContainer">
                         <label htmlFor="comment">Comment</label>
@@ -105,7 +94,6 @@ const Profile = (props) => {
                 </li>
             </ul>
             </p>)
->>>>>>> 153c401cba406edbf1d478b02af902e7668c2697
     })
 
     return (

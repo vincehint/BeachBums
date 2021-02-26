@@ -6,6 +6,7 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 const Home = (props) => {
     console.log(props)
     let [content, setContent] = useState('')
+    let [contentComment, setContentComment] = useState('')
     let [author, setAuthor] = useState(props.user.id)
     let [comment, setComment] = useState('')
     let [allPosts, setAllPosts] = useState([])
@@ -15,7 +16,7 @@ const Home = (props) => {
     let [userPosts, setUserPosts] = useState([props.user.posts])
     let [allUsers, setAllUsers] = useState(props.allUsers)
     let [otherUsers, setOtherUsers] = useState([])
-    let [unfollowing,setUnfollowing] = useState('')
+    // let [unfollowing,setUnfollowing] = useState('')
     let current_user = props.user
 
     useEffect(()=>{
@@ -75,6 +76,11 @@ const Home = (props) => {
     const handleContent = (e) => {
         setContent(e.target.value)
     }
+
+    const handleContentComment = (e) => {
+        setContentComment(e.target.value)
+    }
+
     const handleAddPost = (e) => {
         e.preventDefault()
         let newPost = { content, author, photo }
@@ -89,9 +95,9 @@ const Home = (props) => {
             .catch(error => console.log(error));
     }
     const handleAddComment = (e) => {
-        e.preventDefault()
-        let newComment = { author, content }
-        axios.post(`${REACT_APP_SERVER_URL}/post/:id`, newComment)
+        let newComment = { author, contentComment }
+
+        axios.post(`${REACT_APP_SERVER_URL}/post/${e}`, newComment)
             .then(newComment => {
                 setComment([...comment,newComment])
             })
@@ -123,15 +129,20 @@ const Home = (props) => {
         return (
             <div className="homeFeedContainer">
                 <div className="postContainer">
-                    <p className= "post" key={i}> {post.username} {post.content}</p>
-                        <button value={post._id} onClick={addLike}>❤{post.likes.length}</button>
+                    <p className= "post" key={i}> {post.content}</p>
+                    <button value={post._id} onClick={addLike}>❤{post.likes.length}</button>
+                    <ul>
+                        {post.comments.map(comment =>{
+                            return <li>{comment.content}</li>
+                        })}
+                    </ul>
                 </div>    
                     <form>
                         <div>
-                            <input className="commentBox" type="text" placeholder="leave a comment"></input>
+                            <input className="commentBox" type="text" onChange={handleContentComment} placeholder="leave a comment"></input>
                         </div>
                         <div>
-                            <input className="submitComment" type="submit" onClick={handleAddComment}></input>
+                            <input className="submitComment" type="submit" onClick={()=> handleAddComment(post._id)}></input>
                         </div>
                     </form>
                 
