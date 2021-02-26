@@ -8,13 +8,7 @@ const Profile = (props) => {
     const [redirect,setRedirect] = useState(false)
     const [values, setValues] = useState({
         id: props.user.id,
-        // username: props.user.username,
-        // email: props.user.email,
-        password: '',
-        // birthdate: props.user.birthdate,
-        // about: props.user.about,
-        // location: props.user.location,
-        // photo: props.user.photo
+        password: ''
   })
 
     let handleAccountDelete = () =>{
@@ -66,6 +60,18 @@ const Profile = (props) => {
         );
     };
 
+    let handleDeletePost = (e) => {
+        e.preventDefault()
+
+        axios.delete(`${REACT_APP_SERVER_URL}/post/${props.user.post}`)
+        .then(() => {
+            setRedirect(true)
+        })
+        .catch(error => console.log(error))
+    }
+
+    if (redirect) return <Redirect to="/profile" />
+
     let profileData = props.user.posts
 
     let profileFeed = profileData.map((post, i) => {
@@ -78,6 +84,12 @@ const Profile = (props) => {
                     </div>
                     <div className="postContent">
                         {post.content}
+                        <button onClick={handleDeletePost}>Delete Post</button>
+                    </div>
+                    <div className="commentContainer">
+                        <label htmlFor="comment">Comment</label>
+                        <input className="comment" type="text"></input>
+                        <input className="submitButtonComment" type="submit"></input>
                     </div>
                 </li>
             </ul>
@@ -112,7 +124,7 @@ const Profile = (props) => {
                     </div>
 
                     <div>
-                        <button onClick={changePassWord}>Change Password</button>
+                        <button className="changePasswordButton" onClick={changePassWord}>Change Password</button>
                     </div>
 
                 </div>
@@ -131,11 +143,7 @@ const Profile = (props) => {
                                     </div>  
                                 </div>
                             </div>
-                            <div className="commentContainer">
-                                <label htmlFor="comment">Comment</label>
-                                <input className="comment" type="text"></input>
-                                <input className="submitButtonComment" type="submit"></input>
-                            </div>
+                            
                         </li>
                     </div>
                 </ul>
