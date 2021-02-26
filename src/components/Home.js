@@ -14,6 +14,8 @@ const Home = (props) => {
     let [userPosts, setUserPosts] = useState([props.user.posts])
     let [allUsers, setAllUsers] = useState(props.allUsers)
     let [allPosts, setAllPosts] = useState([])
+    let [otherUsers, setOtherUsers] = useState([])
+    let current_user = props.user
 
     useEffect(()=>{
         axios.get(`${REACT_APP_SERVER_URL}/post/hello`)
@@ -23,13 +25,29 @@ const Home = (props) => {
         .catch(error => console.log(error)); 
       },[])
 
-    const booleanOtherUsers = (user) => {
-        console.log(user._id)
-        console.log(props.user.id)
-        return user._id !== props.user.id
+    useEffect(()=>{
+        const booleanOtherUsers = (user) => {
+            return user._id !== props.user.id
+        }
+        const users_other = allUsers.filter(booleanOtherUsers)
+        setOtherUsers(users_other)
+    },[])
+
+
+    
+    const handleFollowing = (e) => {
+        e.preventDefault()
+        console.log('entrou front-end followin')
+        setFollowing([...following,e.target.value])
+        console.log(e.target.value)
+
+        axios.post(`${REACT_APP_SERVER_URL}/api/follow/${e.target.value}/user/${current_user.id}`)
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => console.log(error))
+
     }
-    const users_other = allUsers.filter(booleanOtherUsers)
-    console.log(users_other)
 
 
     const handleContent = (e) => {
@@ -95,11 +113,11 @@ const Home = (props) => {
                     <h3>Follow Suggestions</h3>
                     <ul>
                         
-                        {users_other.map((user,index)=> {
+                        {otherUsers.map((user,index)=> {
                             return (
                                 <li key={index}>
                                     {user.username}
-                                    <button value={user._id}>Follow</button>
+                                    <button value={user._id} onClick={handleFollowing}>Follow</button>
                                 </li>
                             )
                         })}
